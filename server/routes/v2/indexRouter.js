@@ -13,6 +13,15 @@ router.get('' , async (req,res,next) => {
   
 });
 
+router.get('/' , async (req,res,next) => {
+    try{
+        res.render('index' , {title:'Home Page' , data: {} });
+    }catch(error){
+        res.status(500).send('Error fetching data from API');
+    }
+  
+});
+
 
 router.post('/login' , async (req,res,next) => {
     try{
