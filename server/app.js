@@ -73,7 +73,7 @@ app.use('/main/v2',  indexRouterV2);
 app.use('/api/v2',  indexApiRouterV2);
 
 app.get('/', (req, res) => {
-   res.render('index' , {title:'Home Page' , data: {} });
+  res.redirect('/main/v2');
 });
 
 
