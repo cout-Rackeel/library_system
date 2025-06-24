@@ -8,4 +8,5 @@
     { "src": "/main/v2/(.*)", "dest": "server/app.js" },
     { "src": "/api/v2/(.*)", "dest": "server/app.js" },
     { "src": "/(.*)", "dest": "server/app.js" } 
+  ]
 }
