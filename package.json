@@ -2,6 +2,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server/app.js",
+    "start": "node app.js",
     "vite": "vite"
   },
   "dependencies": {
