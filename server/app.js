@@ -73,6 +73,10 @@ app.use('/main/v2',  indexRouterV2);
 app.use('/api/v2',  indexApiRouterV2);
 
 
+app.get('/', (req,res) => {
+  res.redirect('/main/v2');
+});
+
 // Catch-all for undefined routes
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
