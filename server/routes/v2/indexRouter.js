@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 const {log} = require('console');
+require("dotenv").config();
 
 
 router.get('' , async (req,res,next) => {
@@ -13,10 +14,9 @@ router.get('' , async (req,res,next) => {
   
 });
 
-
 router.post('/login' , async (req,res,next) => {
     try{
-        const response = await axios.post("http://localhost:5500/api/v2/auth/login", {email: req.body.email, password: req.body.password});
+        const response = await axios.post(`${process.env.VERCEL_URI}/api/v2/auth/login`, {email: req.body.email, password: req.body.password});
         res.cookie('jwt', response.data.body, {httpOnly: true , secure: true, sameSite: 'strict'} ) //Sets JWT token in httpsCookie on browser
         res.redirect('/main');
 
@@ -36,7 +36,7 @@ router.get('/users' , async (req,res,next) => {
 
         const bearer = "Bearer " + req.cookies.jwt // Retrieves JWT token stored in httpsCookie
 
-        var response = await axios.get("http://localhost:5500/api/v2/user" , { headers: {'Authorization' : bearer } });
+        var response = await axios.get("${process.env.VERCEL_URI}/api/v2/user" , { headers: {'Authorization' : bearer } });
 
         res.render('all_users', {title:"All Users" , data:response.data.body});
 
