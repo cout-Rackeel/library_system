@@ -4,7 +4,7 @@ const axios = require('axios');
 const {log} = require('console');
 
 
-router.get('/' , async (req,res,next) => {
+router.get('' , async (req,res,next) => {
     try{
         res.render('index' , {title:'Home Page' , data: {} });
     }catch(error){
@@ -12,6 +12,7 @@ router.get('/' , async (req,res,next) => {
     }
   
 });
+
 
 router.post('/login' , async (req,res,next) => {
     try{
