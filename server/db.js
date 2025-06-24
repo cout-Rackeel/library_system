@@ -1,6 +1,6 @@
 
 require("dotenv").config();
-const config = require('./knexfile.js')['development'];
+const config = require('./knexfile.js')['production'];
 const knex = require('knex')(config);
 const { log } = require('console');
 

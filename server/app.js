@@ -69,12 +69,8 @@ app.use(flash());
 // app.use('/main/v1',  indexRouterV1);
 // app.use('/api/v1',  indexApiRouterV1);
 
-app.use('/main/v2',  indexRouterV2);
+app.use('/',  indexRouterV2);
 app.use('/api/v2',  indexApiRouterV2);
-
-app.get('/', (req, res) => {
-  res.redirect('/main/v2');
-});
 
 
 // Catch-all for undefined routes

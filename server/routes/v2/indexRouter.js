@@ -4,15 +4,6 @@ const axios = require('axios');
 const {log} = require('console');
 
 
-router.get('' , async (req,res,next) => {
-    try{
-        res.render('index' , {title:'Home Page' , data: {} });
-    }catch(error){
-        res.status(500).send('Error fetching data from API');
-    }
-  
-});
-
 router.get('/' , async (req,res,next) => {
     try{
         res.render('index' , {title:'Home Page' , data: {} });
