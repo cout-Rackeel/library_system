@@ -46,7 +46,6 @@ app.use(express.urlencoded({extended:true}));
 app.use(morgan('tiny')); // Logging
 
 
-
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // Limit each IP to 100 requests per windowMs
@@ -73,6 +72,11 @@ app.use('/api/v1',  indexApiRouterV1);
 app.use('/main/v2',  indexRouterV2);
 app.use('/api/v2',  indexApiRouterV2);
 
+app.get('/', (req, res) => {
+   res.render('index' , {title:'Home Page' , data: {} });
+});
+
+
 // Catch-all for undefined routes
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
@@ -96,7 +100,7 @@ process.on("unhandledRejection", (err) => {
 
 const currentVersion = 'v2';
 // Listening to Port
-app.listen(PORT , () => console.log(`Listening on port ${PORT} || http://localhost:5500/main/${currentVersion} ...`))
+// app.listen(PORT , () => console.log(`Listening on port ${PORT} || http://localhost:5500/main/${currentVersion} ...`))
 
 module.exports = app;
 
