@@ -69,7 +69,7 @@ app.use(flash());
 // app.use('/main/v1',  indexRouterV1);
 // app.use('/api/v1',  indexApiRouterV1);
 
-app.use('/',  indexRouterV2);
+app.use('/main/v2',  indexRouterV2);
 app.use('/api/v2',  indexApiRouterV2);
 
 
