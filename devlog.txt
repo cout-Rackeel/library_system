@@ -1,0 +1,8 @@
+5/8/2025
+- Worked on book endpoint
+    - Add books [COMPLETED]
+    - error handling for adding books i.e cant add two books with the same id
+    - patch books , useful for when borrowing books [COMPLETED]
+
+- Book Copies endpoint
+    - 

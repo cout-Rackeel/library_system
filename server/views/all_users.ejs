@@ -1,0 +1,13 @@
+<h1>All Users</h1> <br>
+
+<% if (data.length) { %>
+    <% data.forEach(user => { %>
+        <div class="" style="margin-bottom: 10px; border-bottom: 1px solid black; padding: 5px 5px; width: 20%;">
+          <p class=""><%= user.user_id%></p>
+          <p class=""><%= user.f_name%> <%= user.l_name%></p>
+          <p class=""><%= user.email%></p>
+          <p class=""><%= user.dt_joined%></p>
+          <p class=""><%= user.user_type%></p>
+        </div>
+    <% }) %>
+<% }%>

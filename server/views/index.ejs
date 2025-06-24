@@ -1,0 +1,24 @@
+<h1 class="text-3xl font-bold underline">Library System Login</h1>
+
+<div class="bg-[url('/images/landing.png')] bg-contain bg-center ">
+</div>
+
+<!-- <div class="h-14 bg-linear-to-r from-cyan-500 to-blue-500"></div> -->
+
+<form action="/main/login" method="post">
+    <input type="email" name="email" id="email" value="racky2@gmail.com">
+    <input type="password" name="password" id="password" value="password123"> 
+    <button type="submit">Submit</button>
+</form>
+
+
+<% if (data != null) { %>
+  <p><%= JSON.stringify(data)%></p>
+<% }%>
+  
+
+
+
+
+
+

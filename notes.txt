@@ -1,0 +1,63 @@
+**Online Library System**:
+
+# **Project Requirement Document**  
+## **1. Project Overview**  
+**Project Name:** Online Library Management System  
+**Objective:** To develop an online system that tracks borrowed books, manages stock availability, designates return times, and handles borrowing fees for non-members.  
+
+## **2. Functional Requirements**  
+### **User Management**  
+- Allow user registration with credentials: **Name, Email, Password, Date Joined, User Type**  
+- Categorize users as **Members** or **Librarians**  
+- Implement borrowing restrictions based on user type  
+- Charge non-members a **borrow fee** that is returned upon book return  
+
+### **Book Management**  
+- Store book details: **Book ID, Title, Author, Publisher, Total Copies**  
+- Track individual book copies and their availability  
+- Organize books by categories using **Category ID**  
+- Manage book states (Available, Borrowed, Lost, etc.)  
+
+### **Borrowing and Loan System**  
+- Members can borrow books with conditions on **Return Date**  
+- Librarians authorize book loans and returns  
+- Track loan transactions with **Loan Number, Loan Date, Return Date, Late Fees, and Payment Status**  
+- Implement electronic signature validation for borrowers and returners  
+- Monitor **Late Fees, Amount Retained, and Amount Returned**  
+
+## **3. Database Design**  
+### **Entity Relationship Diagram (ERD)**  
+- **User** (user_id, name, email, password, joined date, user_type)  
+- **Book** (book_id, title, author, publisher, total copies)  
+- **Category** (cat_id, category name)  
+- **Book_Copy** (book_id, copy_num, state)  
+- **Borrow** (member_id, book_id, copy_num, borrow_date, return_date, librarian_id)  
+- **Loan** (book_id, copy_num, loan_num, loan_date, return_date, late_fee, amount_retained, amount_returned, loan_distributor, borrower_esign, returner_esign, return_authorizor)  
+
+### **Relational Notation**  
+- Foreign keys ensure referential integrity (e.g., **Member_ID references User_ID**)  
+- **Primary Key Constraints** enforce data uniqueness  
+- **Transaction Tables** (Borrow, Loan) track borrowing activities  
+
+## **4. System Features**  
+- **Member and Librarian Dashboard** for managing book loans  
+- **Book Inventory Management** with availability tracking  
+- **Automated Return Date Calculation**  
+- **Late Fee Processing and Borrow Fee Handling**  
+- **Audit Logging** for borrowing history  
+
+## **5. Security and Compliance**  
+- Secure **user authentication and role-based access**  
+- Validate electronic signatures for borrowing and returning books  
+- Implement **data encryption** for sensitive information  
+
+## **6. Performance Requirements**  
+- System should support **multiple concurrent users**  
+- Database queries should **execute efficiently** to minimize load times  
+- Ensure **high availability and reliability** for book tracking  
+
+## **7. Assumptions and Constraints**  
+- Users must have an **active membership** to borrow books without fees  
+- A book copy can be borrowed **only if available** in stock  
+- Late fees will be **automatically calculated** based on return delays  
+
