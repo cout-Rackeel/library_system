@@ -35,7 +35,7 @@ app.set('layout' , 'layouts/layout');
 app.use(expressLayout);
 
 //Setting up Public
-app.use(express.static(path.join(__dirname , '..' ,'client/public')))
+app.use(express.static(path.join(__dirname , '..' ,'client')))
 app.use(express.static(path.join(__dirname , 'partials')))
 
 //Setting up Middleware for Parsing JSON & URLENCODED data
