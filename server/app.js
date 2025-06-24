@@ -27,8 +27,8 @@ const indexApiRouterV2 = require('./routes/v2/indexApi.js');
 const { errorHandler } = require("./middleware/v1/errorHandler.js");
 
 //SET APP
-app.set('views', './server/views');
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname ,'views'));
 
 //SET Layouts
 app.set('layout' , 'layouts/layout');
