@@ -66,8 +66,8 @@ app.use(session({
 app.use(flash());
 
 // Setting up Routing middleware
-app.use('/main/v1',  indexRouterV1);
-app.use('/api/v1',  indexApiRouterV1);
+// app.use('/main/v1',  indexRouterV1);
+// app.use('/api/v1',  indexApiRouterV1);
 
 app.use('/main/v2',  indexRouterV2);
 app.use('/api/v2',  indexApiRouterV2);
