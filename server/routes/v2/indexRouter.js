@@ -18,7 +18,7 @@ router.post('/login' , async (req,res,next) => {
     try{
         const response = await axios.post(`${process.env.VERCEL_URI}/api/v2/auth/login`, {email: req.body.email, password: req.body.password});
         res.cookie('jwt', response.data.body, {httpOnly: true , secure: true, sameSite: 'strict'} ) //Sets JWT token in httpsCookie on browser
-        res.redirect('/main');
+        res.redirect('/');
 
     }catch(error){
         res.status(500).json({
@@ -36,7 +36,7 @@ router.get('/users' , async (req,res,next) => {
 
         const bearer = "Bearer " + req.cookies.jwt // Retrieves JWT token stored in httpsCookie
 
-        var response = await axios.get("${process.env.VERCEL_URI}/api/v2/user" , { headers: {'Authorization' : bearer } });
+        var response = await axios.get(`${process.env.VERCEL_URI}/api/v2/user`, { headers: {'Authorization' : bearer } });
 
         res.render('all_users', {title:"All Users" , data:response.data.body});
 
