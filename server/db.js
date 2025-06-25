@@ -1,7 +1,8 @@
 
 require("dotenv").config();
+
 const environment = process.env.NODE_ENV || 'development';
-const config = require('./knexfile.js')[environment];
+const config = require('../knexfile')[environment];
 const knex = require('knex')(config);
 const { log } = require('console');
 
@@ -21,6 +22,7 @@ const { log } = require('console');
 */
 
 log(config)
+
 
 const connectToDatabase = async () => {
     await knex.raw('SELECT 1')
