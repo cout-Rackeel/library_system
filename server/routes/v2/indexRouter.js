@@ -5,7 +5,7 @@ const {log} = require('console');
 require("dotenv").config();
 
 
-router.get('' , async (req,res,next) => {
+router.get('/' , async (req,res,next) => {
     try{
         res.render('index' , {title:'Home Page' , data: {} });
     }catch(error){
