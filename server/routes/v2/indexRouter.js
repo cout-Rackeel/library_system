@@ -63,13 +63,20 @@ router.post('/login' , async (req,res,next) => {
             // console.error('Unexpected Error:', error.message);
             // res.render(`${rootViewFolder}error`, {title:"Error Page" , data:error , detail:detail,  haveNavbar : true});
         }
-
-     
         
     }
   
 
 });
+
+router.get('/signup' , async(req , res, next) => {
+    try{
+        res.render(`${rootViewFolder}signup` , {title:'Libby - Signup Page' , data:{}, haveNavbar : false})
+    }catch(error){
+        res.status(500).send('Error Loading Page');
+        next(error)
+    }
+})
 
 router.get('/users' , async (req,res,next) => {
     try{
