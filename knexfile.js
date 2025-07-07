@@ -16,18 +16,12 @@ module.exports = {
         seeds:{
             directory: './seeds'
         },
-        useNullAsDefault: true,
     },
 
     production: {
         client: process.env.DB_CLIENT,
         connection:{
             connectionString:process.env.DB_CONNECTION_STRING,
-            // host:process.env.DB_PROD_HOST,
-            // port:process.env.DB_PORT,
-            // user:process.env.DB_USER,
-            // password:process.env.DB_PROD_PASSWORD?.trim(),
-            // database:process.env.DB_PROD,
             pool: { min: 0, max: 5 },
             ssl: {rejectUnauthorized:false}
         },
@@ -37,7 +31,6 @@ module.exports = {
         seeds:{
             directory: './server/seeds'
         },
-        // useNullAsDefault: true
     }
 
 };

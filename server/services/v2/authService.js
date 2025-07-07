@@ -73,7 +73,7 @@ exports.userLogin = async (userData) => {
         })
         .select("user_id" ,"password", "user_type")
 
-        const invalidCredentials = new AppError("Invalid Credentials" , 400);
+        const invalidCredentials = new AppError("Invalid Credentials" , 401);
      
         if(!response[0]) throw invalidCredentials;
 

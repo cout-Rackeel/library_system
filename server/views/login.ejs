@@ -1,0 +1,124 @@
+<!-- 
+<div class="bg-[url(/images/tree_swing.svg)] size-lvh w-full bg-fill bg-center bg-no-repeat relative opacity-80 z-0 "></div>
+
+
+<div>
+     <h2 class="font-autour text-2xl bg-primary text-center text-white w-1/8 absolute h-fit inset-10 z-10 shadow-lg tracking-wide">Libby</h2>
+</div>
+
+
+<div class="absolute z-10 h-[65%] w-[22.5%]  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-[1.25rem] bg-white/60 border border-black p-10">
+    <h1 class="text-4xl font-extrabold font-outfit mb-10">Login</h1>
+     <form action="/login" method="post" class="flex flex-col gap-6 h-full">
+    <div>
+        <label for="email" class="font-inter font-bold">Email</label>
+        <input type="email" name="email" id="email" value="racky2@gmail.com" class="mt-2 border border-gray-300 w-full px-2 py-3 rounded-sm bg-white">
+    </div>
+
+    <div>
+        <label for="password" class="font-inter font-bold">Password</label>
+        <input type="password" name="password" id="password" value="password123" class="mt-2 border border-gray-300 w-full px-2 py-3 rounded-sm bg-white"> 
+        <span class="font-inter text-sm text-red-500">
+              <% if(data != null) {%>
+                    <% if(data.status != null) {%>
+                       <span class="text-red-600"><%= data.message%></span>
+                     <%}%>
+             <%}%>
+        </span>
+    </div>
+
+    <p class="font-inter font-light text-sm text-right  hover:cursor-pointer">Forget Password?</p>
+    
+    
+    <% if(data != null ) {%>
+        <% if(data.status != 429) {%>
+            <button type="submit" class="w-full rounded-sm p-3 bg-accent flex-end text-white  font-inter hover:cursor-pointer">Submit</button>
+        <%}%>
+    <%}%>
+
+
+     <p class="font-inter font-light text-sm text-center">No account?  <a href="" class="text-primary font-semibold  hover:cursor-pointer">Register here</a></p>
+
+
+</form>
+</div>
+
+
+<div class="absolute z-10 top-1/5 left-10 w-[25%]">
+    <p class="font-ovo text-6xl leading-18">Join our online library community</p>
+</div> 
+-->
+
+<div class="
+     flex p-5 flex-col gap-9 
+     lg:p-0 lg:w-[100%]">
+
+    <h2 class="
+      font-autour text-[1.35rem] bg-primary w-32 text-center text-white h-fit mt-8 shadow-lg tracking-wide
+      lg:w-50 lg:text-2xl lg:absolute lg:z-10 lg:inset-10
+      ">Libby</h2>
+
+    <span class="lg:hidden">
+        <h1 class="
+        text-3xl font-bold font-outfit pl-1
+        lg:pl-0 lg:text-4xl lg:font-extrabold lg:mb-10 lg:absolute lg:z-10
+        ">Login</h1>
+    </span>
+    
+
+    <p class="
+    font-ovo font-light text-2xl tracking-wide w-64 pl-1
+    sm:text-3xl sm:w-full
+    md:text-3xl md:w-full
+    lg:pl-0 lg:text-5xl lg:leading-18 lg:absolute lg:z-10 lg:top-1/5 lg:left-10 lg:w-1/4
+    xl:text-6xl xl:w-1/4
+    ">Join our online library community</p>
+
+
+
+    <div class="
+    bg-[url(/images/tree_swing.svg)] h-56 bg-contain bg-center bg-no-repeat opacity-80  
+    lg:size-lvh lg:bg-fill lg:absolute lg:z-0 lg:inset-0 lg:w-full"></div>
+
+    <div class="lg:h-[550px] lg:w-[360px]
+    lg:absolute lg:z-10 lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2  lg:rounded-[1.25rem] lg:bg-white/60 lg:border lg:border-black lg:p-10
+    ">
+        <form action="/login" method="post" class="flex flex-col gap-4 h-full lg:gap-6">
+            <span class="hidden lg:block">
+                <h1 class="text-4xl font-extrabold font-outfit mb-8">Login</h1>
+            </span>
+            
+            <div>
+                <label for="email" class="font-inter font-bold hidden lg:block">Email</label>
+                <input type="email" name="email" id="email" placeholder="Email" value="" class="font-inter mt-2 border border-gray-300 w-full px-2 py-3 rounded-sm bg-white">
+            </div>
+
+            <div>
+                <label for="password" class="font-inter font-bold hidden lg:block">Password</label>
+                <input type="password" name="password" id="password" value="" placeholder="Password" class="font-inter mt-2 border border-gray-300 w-full px-2 py-3 rounded-sm bg-white"> 
+                <span class="font-inter text-sm text-red-500">
+                    <% if(data != null) {%>
+                            <% if(data.status != null) {%>
+                            <span class="text-red-600"><%= data.message%></span>
+                            <%}%>
+                    <%}%>
+                </span>
+            </div>
+
+            <p class="font-inter font-light text-sm text-right hover:cursor-pointer my-4 lg:my-0">Forget Password?</p>
+            
+            <% if(data != null ) {%>
+                <% if(data.status != 429) {%>
+                    <button type="submit" class="w-full rounded-sm p-3 bg-accent flex-end text-white font-inter hover:cursor-pointer">Submit</button>
+                <%}%>
+            <%}%>
+
+            <p class="font-inter font-light text-sm text-center my-4">No account?  <a href="" class="text-primary font-semibold  hover:cursor-pointer">Register here</a></p>
+        </form>
+    </div>
+
+
+</div>
+
+
+

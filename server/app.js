@@ -49,7 +49,7 @@ app.use(morgan('tiny')); // Logging
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // Limit each IP to 100 requests per windowMs
-  message: { status: "error", message: "Too many requests, please try again later." },
+  message: { status: 429 , message: "Too many requests, please try again later." },
 });
 
 app.use(limiter); // Limit Amount of request per
@@ -100,7 +100,10 @@ process.on("unhandledRejection", (err) => {
 
 const currentVersion = 'v2';
 // Listening to Port
-// app.listen(PORT , () => console.log(`Listening on port ${PORT} || http://localhost:5500/main/${currentVersion} ...`))
+
+if(process.env.NODE_ENV == "development"){
+  app.listen(PORT , () => console.log(`Listening on port ${PORT} || http://localhost:5500/ ...`))
+}
 
 module.exports = app;
 
