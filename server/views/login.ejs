@@ -2,10 +2,10 @@
      flex p-4 flex-col gap-9 
      lg:p-0 lg:w-[100%]">
 
-    <h2 class="
+    <a href="/" class="
       font-autour text-[1.35rem] bg-primary w-32 text-center text-white h-fit mt-8 shadow-lg tracking-wide
       lg:w-50 lg:text-2xl lg:absolute lg:z-10 lg:inset-10
-      ">Libby</h2>
+      ">Libby</a>
 
     <span class="lg:hidden">
         <h1 class="
@@ -35,17 +35,17 @@
             </span>
             
             <div>
-                <label for="email" class="font-inter font-bold hidden lg:block">Email</label>
-                <input type="email" name="email" id="email" placeholder="Email" value="" class="font-inter mt-2 border border-gray-300 w-full px-2 py-3 rounded-sm bg-white">
+                <label for="email" class="input-label">Email</label>
+                <input type="email" name="email" id="email" placeholder="Email" value="<%=data.email%>" class="input-btn" required>
             </div>
 
             <div>
-                <label for="password" class="font-inter font-bold hidden lg:block">Password</label>
-                <input type="password" name="password" id="password" value="" placeholder="Password" class="font-inter mt-2 border border-gray-300 w-full px-2 py-3 rounded-sm bg-white"> 
+                <label for="password" class="input-label">Password</label>
+                <input type="password" name="password" id="password" value="" placeholder="Password" class="input-btn" required> 
                 <span class="font-inter text-sm text-red-500">
-                    <% if(data != null) {%>
-                            <% if(data.status != null) {%>
-                            <span class="text-red-600"><%= data.message%></span>
+                    <% if(error != null) {%>
+                            <% if(error.status != null) {%>
+                            <span class="text-red-600"><%= error.message%></span>
                             <%}%>
                     <%}%>
                 </span>
@@ -53,9 +53,9 @@
 
             <p class="font-inter font-light text-sm text-right hover:cursor-pointer my-4 lg:my-0">Forget Password?</p>
             
-            <% if(data != null ) {%>
-                <% if(data.status != 429) {%>
-                    <button type="submit" class="w-full rounded-sm p-3 bg-accent flex-end text-white font-inter hover:cursor-pointer">Submit</button>
+            <% if(error != null ) {%>
+                <% if(error.status != 429) {%>
+                    <button type="submit" class="btn-1">Submit</button>
                 <%}%>
             <%}%>
 

@@ -1,34 +1,38 @@
-<div class="flex flex-col px-4 py-4 gap-4">
+<div class="flex flex-col px-4 py-4 gap-4 lg:flex-row lg:p-0">
     <!-- Display Child -->
-     <div class="flex flex-row items-end border-b-1 border-bottom border-gray-300 pb-4">
+     <div class="lg:p-4 lg:w-1/3 lg:h-screen lg:bg-primary">
+
+        <div class="
+        flex flex-row items-end border-b-1 border-bottom border-gray-300 pb-4 bg-body
+        lg:border lg:border-primary lg:flex-col lg:items-start lg:h-full lg:rounded-xl lg:space-y-4">
+
         <!-- Left Side -->
-        <div class="flex flex-col space-y-6">
-            <h2 class="
+        <div class="flex flex-col space-y-6 lg:p-4 lg:space-y-12">
+            <a href="/" class="
             font-autour text-[1.35rem] bg-primary w-32 text-center text-white h-fit mt-8 shadow-lg tracking-wide
-            lg:w-50 lg:text-2xl lg:absolute lg:z-10 lg:inset-10
-            ">Libby</h2>
+            lg:w-50 lg:text-2xl 
+            cursor-pointer
+            ">Libby</a>
 
             <span class="lg:hidden">
                 <h1 class="
                 text-3xl font-bold font-outfit pl-1
-                lg:pl-0 lg:text-4xl lg:font-extrabold lg:mb-10 lg:absolute lg:z-10
+                lg:pl-0 lg:text-4xl lg:font-extrabold lg:mb-10
                 ">Sign Up</h1>
             </span>
 
             <p class="
             font-ovo font-light text-xl tracking-wide w-full pl-1
-            sm:text-3xl sm:w-full
-            md:text-3xl md:w-full
-            lg:pl-0 lg:text-5xl lg:leading-18 lg:absolute lg:z-10 lg:top-1/5 lg:left-10 lg:w-1/4
-            xl:text-6xl xl:w-1/4
+            lg:pl-0 lg:text-5xl lg:leading-18 lg:top-1/5 lg:left-10 lg:w-full
             ">Join our online library community</p>
         </div>
 
         <!-- Right Side -->
-        <div class="">
-            <div class="w-30 h-42 p-2 p-0 rounded-sm border border-gray-300 shadow-sm">
+        <div class="lg:px-4">
+            <div class="w-30 h-42 p-2 p-0 rounded-sm border border-gray-300 shadow-sm lg:w-70 lg:h-108">
                <div class="
                     bg-[url(/images/book_cover.jpg)] h-full w-full bg-contain bg-center bg-no-repeat
+                    
                     ">
                 </div> 
             </div>
@@ -36,42 +40,40 @@
 
      </div>
 
+     </div>
+
     <!-- Form Child -->
-     <div class="lg:h-[550px] lg:w-[360px]
-    lg:absolute lg:z-10 lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2  lg:rounded-[1.25rem] lg:bg-white/60 lg:border lg:border-black lg:p-10
-    ">
+     <div class="lg:w-full">
 
-    <!-- <div class="
-    bg-[url(/images/girl_read.svg)] h-56 bg-contain bg-center bg-no-repeat opacity-80  
-    lg:size-lvh lg:bg-fill lg:absolute lg:z-0 lg:inset-0 lg:w-full"></div> -->
+        <form action="/signup" method="post" class="
+        flex flex-col gap-6 h-full mt-6 
+        lg:mt-0 lg:gap-12 lg:content-center lg:py-16 lg:px-24">
 
-        <form action="/signup" method="post" class="flex flex-col gap-6 h-full mt-6 lg:gap-6">
-
-            <span class="hidden lg:block">
+            <span class="hidden lg:block lg:mb-2">
                 <h1 class="text-4xl font-extrabold font-outfit mb-8">Sign Up</h1>
-                <p class="font-inter font-light text-sm text-center my-4">Already have an account? <a href="/login" class="text-primary font-semibold  hover:cursor-pointer">Login here</a></p>
+                <p class="font-inter font-light text-sm">Already have an account? <a href="/login" class="text-primary font-semibold  hover:cursor-pointer">Login here</a></p>
             </span>
 
-            <div class="flex flex-col gap-6 space-y-0 md:flex-row md:space-y-4">
-                <div>
+            <div class="flex flex-col gap-6 space-y-0 lg:flex-row lg:justify-between lg:gap-30">
+                <div class="lg:w-1/2">
                     <label for="fname" class="font-inter font-bold hidden lg:block">First Name</label>
-                    <input type="fname" name="fname" id="fname" placeholder="First Name" value="" class="font-inter mt-2 border border-gray-300 w-full px-2 py-3 rounded-sm bg-white">
+                    <input type="fname" name="fname" id="fname" placeholder="First Name" value="<%=data.fname%>" class="input-btn" required>
                     <span class="font-inter text-sm text-red-500">
-                        <% if(data != null) {%>
-                                <% if(data.status != null) {%>
-                                <span class="text-red-600"><%= data.message%></span>
+                        <% if(error != null) {%>
+                                <% if(error.status != null && error.details.f_name != null && data.fname == "") {%>
+                                <span class="text-red-600"><%= error.details.f_name%></span>
                                 <%}%>
                         <%}%>
                     </span>
                 </div>
 
-                <div>
-                    <label for="lname" class="font-inter font-bold hidden lg:block">Last Name</label>
-                    <input type="lname" name="lname" id="lname" placeholder="Last Name" value="" class="font-inter mt-2 border border-gray-300 w-full px-2 py-3 rounded-sm bg-white">
+                <div class="lg:w-1/2">
+                    <label for="lname" class="input-label">Last Name</label>
+                    <input type="lname" name="lname" id="lname" placeholder="Last Name" value="<%=data.lname%>" class="input-btn" required>
                     <span class="font-inter text-sm text-red-500">
-                        <% if(data != null) {%>
-                                <% if(data.status != null) {%>
-                                <span class="text-red-600"><%= data.message%></span>
+                        <% if(error != null) {%>
+                                <% if(error.status != null && error.details.l_name != null && data.lname == "") {%>
+                                <span class="text-red-600"><%= error.details.l_name%></span>
                                 <%}%>
                         <%}%>
                     </span>
@@ -80,24 +82,27 @@
             </div>
             
             <div>
-                <label for="email" class="font-inter font-bold hidden lg:block">Email</label>
-                <input type="email" name="email" id="email" placeholder="Email" value="" class="font-inter mt-2 border border-gray-300 w-full px-2 py-3 rounded-sm bg-white">
+                <label for="email" class="input-label">Email</label>
+                <input type="email" name="email" id="email" placeholder="Email" value="<%=data.email%>" class="input-btn" required>
                 <span class="font-inter text-sm text-red-500">
-                    <% if(data != null) {%>
-                            <% if(data.status != null) {%>
-                            <span class="text-red-600"><%= data.message%></span>
+                    <% if(error != null) {%>
+                            <% if(error.status != null && error.details.email != null && data.email == "") {%>
+                            <span class="text-red-600"><%= error.details.email%></span>
                             <%}%>
                     <%}%>
                 </span>
             </div>
 
             <div>
-                <label for="password" class="font-inter font-bold hidden lg:block">Password</label>
-                <input type="password" name="password" id="password" value="" placeholder="Password" class="font-inter mt-2 border border-gray-300 w-full px-2 py-3 rounded-sm bg-white"> 
+                <label for="password" class="input-label">Password</label>
+                <input type="password" name="password" id="password" value="<%=data.password %>" placeholder="Password" class="input-btn" required> 
                 <span class="font-inter text-sm text-red-500">
-                    <% if(data != null) {%>
-                            <% if(data.status != null) {%>
-                            <span class="text-red-600"><%= data.message%></span>
+                    <% if(error != null) {%>
+                            <% if(error.status != null && error.details.password != null) {%>
+                                <% error.details.password.forEach(function(err) { %>
+                                     <span class="text-red-600"><%= err %></span>
+                                <% }); %>
+
                             <%}%>
                     <%}%>
                 </span>
@@ -105,11 +110,12 @@
 
             <% if(data != null ) {%>
                 <% if(data.status != 429) {%>
-                    <button type="submit" class="w-full rounded-sm p-3 bg-accent flex-end text-white font-inter hover:cursor-pointer mt-5">Create Account</button>
+                    <button type="submit" class="btn-1 mt-6">Create Account</button>
                 <%}%>
             <%}%>
 
-            <p class="font-inter font-light text-sm text-center my-4">Already have an account? <a href="/login" class="text-primary font-semibold  hover:cursor-pointer">Login here</a></p>
+            <p class="font-inter font-light text-sm text-center my-4 lg:hidden">Already have an account? <a href="/login" class="text-primary font-semibold  hover:cursor-pointer">Login here</a></p>
+
         </form>
     </div>
 

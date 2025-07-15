@@ -9,23 +9,54 @@ const argon = require('argon2');
 const jwt = require('jsonwebtoken');
 const AppError = require("../../utils/errors/AppError");
 const ValidationError = require("../../utils/errors/ValidationError");
+const { generateRandomNumber } = require("../../utils/common");
 
 exports.userSignUp = async (userData) => {
  
         // UserData will be the request.body in which this service is called
+        let validationErrors = {f_name:null,l_name:null,email:null,password:null};
+        let passwordErrors = [];
+        let successfulValidation = true
+        let userPassword = (userData.password == null || userData.password == '') ? null : await argon.hash(userData.password)
+
+        //VALIDATION CHECKS
+
+        if(userData.f_name == null || userData.f_name == ''){
+            successfulValidation = false;
+            validationErrors.f_name = 'First name must not be null';
+        }
+
+        if(userData.l_name == null || userData.l_name == ''){
+            successfulValidation = false;
+            validationErrors.l_name = 'Last name must not be null';
+        }
+
+        if(userData.email == null || userData.email == ''){
+            successfulValidation = false;
+            validationErrors.email = 'Email must not be null';
+        }
+
+        if(userData.password == null || userData.password == ''){
+            successfulValidation = false;
+            passwordErrors.push('Password must not be null');
+            validationErrors.password = passwordErrors;
+        }
+
+
+        if(!successfulValidation){
+            throw new ValidationError("Validation Error", validationErrors);
+        }
+
         const userBody = {
-            user_id: userData.user_id,
+            user_id: userData.user_id ?? generateRandomNumber(12),
             f_name: userData.f_name,
             l_name: userData.l_name,
             email: userData.email,
-            password: await argon.hash(userData.password),
+            password: userPassword,
             dt_joined: new Date(),
-            user_type : userData.user_type
+            user_type : userData.user_type ?? null
         };
 
-        if(userBody.user_id == null || userBody.user_id == ''){
-            throw new ValidationError("User cannot be add" , ['User name is null']);
-        }
 
         const deliverable = await knex('public.user').insert(userBody).returning(['user_id','user_type']);
 
