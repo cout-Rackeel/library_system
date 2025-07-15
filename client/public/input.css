@@ -8,6 +8,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Autour+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&family=Ovo&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @theme {
+  --shadow-dxsml: 0 5px 0px hsl(245 17% 29%); 
   --shadow-dsml: 0 10px 0px hsl(245 17% 29%);
   --shadow-dmd: 0 15px 0px hsl(245 17% 29%); 
 }
@@ -15,6 +16,12 @@
 @layer components {
     .btn-1 {
         @apply w-full rounded-sm p-3 bg-accent text-white font-inter shadow-sm transition delay-150 duration-300 ease-in-out
+        hover:cursor-pointer hover:-translate-y-1 hover:scale-110
+    }
+
+    .cta-btn{
+        @apply w-full rounded-md p-3 bg-accent text-white font-poppins font-bold  text-center shadow-dsml
+        transition delay-150 duration-300 ease-in-out
         hover:cursor-pointer hover:-translate-y-1 hover:scale-110
     }
 
@@ -26,8 +33,33 @@
         @apply font-inter font-bold hidden lg:block
     }
 
+    .image-contain-center{
+        @apply bg-contain bg-center bg-no-repeat
+    }
+
     .image-style{
         @apply bg-contain bg-center bg-no-repeat border rounded-lg shadow-dsml
     }
+
+    .card-container{
+        @apply h-52 w-38 bg-white rounded-sm shrink-0 py-3 
+    }
+
+    .card-container-bd{
+        @apply h-52 w-38 bg-white border border-black rounded-sm shrink-0 py-3
+    }
+
+
+    /* GENRES */
+
+    .genre-heading{
+        @apply border border-black rounded-xl flex flex-row justify-between px-4 py-6
+    }
+
+    .genre-text{
+        @apply font-poppins font-bold text-xl
+    }
+
+    
 }
 

@@ -8,7 +8,10 @@ module.exports = {
         accent: 'hsl(348 97% 73%)',
         accent_light: 'hsl(348 97% 73%)',
         body: 'hsl(240 100% 98%)',
-        dark_primary: 'hsl(245 17% 29%)'
+        dark_primary: 'hsl(245 17% 29%)',
+        comedy_yellow: 'hsl(64 97% 69%)',
+        action_orange: 'hsl(24 97% 69%)',
+        scifi: 'hsl(203 97% 69%)',
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
