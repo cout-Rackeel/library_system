@@ -15,7 +15,7 @@
 
 @layer components {
     .btn-1 {
-        @apply w-full rounded-sm p-3 bg-accent text-white font-inter shadow-sm transition delay-150 duration-300 ease-in-out
+        @apply w-full rounded-sm bg-accent text-white font-inter shadow-sm transition delay-150 duration-300 ease-in-out
         hover:cursor-pointer hover:-translate-y-1 hover:scale-110
     }
 
@@ -33,20 +33,57 @@
         @apply font-inter font-bold hidden lg:block
     }
 
-    .image-contain-center{
+    /* .image-contain-center{
         @apply bg-contain bg-center bg-no-repeat
-    }
+    } */
 
     .image-style{
         @apply bg-contain bg-center bg-no-repeat border rounded-lg shadow-dsml
     }
 
+    /* .card-container{
+        @apply h-52 w-38 bg-white rounded-sm shrink-0 py-3 border border-slate-300 shadow-sm md:h-66 md:w-46
+    } */
+
+    .card-showcase{
+        @apply md:w-50 
+    }
+
+    .card-img{
+        @apply h-full w-full
+               bg-contain bg-center bg-no-repeat
+               transition delay-50 duration-250 ease-in-out group-hover:cursor-pointer group-hover:-translate-y-10 group-hover:scale-100
+    }
+
     .card-container{
-        @apply h-52 w-38 bg-white rounded-sm shrink-0 py-3 
+        @apply h-52 w-38 shrink-0 md:h-66 md:w-46 shadow-dxsml rounded-md pb-2 
     }
 
     .card-container-bd{
         @apply h-52 w-38 bg-white border border-black rounded-sm shrink-0 py-3
+    }
+
+    /* .card-animation{
+        @apply transition delay-50 duration-250 ease-in-out group-hover:cursor-pointer group-hover:-translate-y-10 group-hover:scale-100
+    } */
+
+    .nav-btn{
+        @apply flex flex-col items-center justify-center h-10 w-32 text-center font-outfit border border-black rounded-3xl 
+        transition delay-150 duration-300 ease-in-out hover:cursor-pointer hover:-translate-y-1 hover:scale-110
+    }
+
+    .hover-animation{
+         @apply transition delay-50 duration-300 ease-in-out hover:cursor-pointer hover:-translate-y-1 hover:scale-110
+    }
+
+    .nav-link{
+        @apply relative after:left-0 after:bottom-[-4px] font-outfit origin-bottom-left   
+        after:absolute after:w-full after:h-1 after:content-[''] 
+        after:bg-linear-to-r after:from-primary after:to-white 
+        after:scale-x-0 hover:after:scale-x-100 
+        after:transition-transform after:duration-300  
+        after:origin-bottom-left      
+        after:rounded-md 
     }
 
 
