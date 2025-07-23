@@ -56,7 +56,7 @@
     }
 
     .card-container{
-        @apply h-52 w-38 shrink-0 md:h-66 md:w-46 shadow-dxsml rounded-md pb-2 
+        @apply h-52 w-38 shrink-0 md:h-66 md:w-46 md:shadow-dxsml md:rounded-md md:pb-2 
     }
 
     .card-container-bd{

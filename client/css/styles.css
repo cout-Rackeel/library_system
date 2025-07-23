@@ -817,11 +817,6 @@
       width: calc(3/5 * 100%);
     }
   }
-  .md\:w-50 {
-    @media (width >= 48rem) {
-      width: calc(var(--spacing) * 50);
-    }
-  }
   .md\:w-auto {
     @media (width >= 48rem) {
       width: auto;
@@ -1636,15 +1631,21 @@
     height: calc(var(--spacing) * 52);
     width: calc(var(--spacing) * 38);
     flex-shrink: 0;
-    border-radius: var(--radius-md);
-    padding-bottom: calc(var(--spacing) * 2);
-    --tw-shadow: 0 5px 0px var(--tw-shadow-color, hsl(245 17% 29%));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     @media (width >= 48rem) {
       height: calc(var(--spacing) * 66);
     }
     @media (width >= 48rem) {
       width: calc(var(--spacing) * 46);
+    }
+    @media (width >= 48rem) {
+      border-radius: var(--radius-md);
+    }
+    @media (width >= 48rem) {
+      padding-bottom: calc(var(--spacing) * 2);
+    }
+    @media (width >= 48rem) {
+      --tw-shadow: 0 5px 0px var(--tw-shadow-color, hsl(245 17% 29%));
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
   .card-container-bd {
