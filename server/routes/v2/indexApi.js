@@ -9,6 +9,8 @@ const librarianRouter = require('../v2/librarianRouter');
 const bookRouter = require('../v2/bookRouter');
 const bookCopyRouter = require('../v2/bookCopyRouter');
 const borrowRouter = require('../v2/borrowRouter')
+const categoryRouter = require('../v2/categoryRouter');
+const bookCategoryRouter = require('../v2/bookCategoryRouter');
 
 
 
@@ -19,5 +21,7 @@ router.use('/librarian' , librarianRouter);
 router.use('/book', bookRouter);
 router.use('/bookcopy', bookCopyRouter);
 router.use('/borrow', borrowRouter);
+router.use('/category', categoryRouter);
+router.use('/bookcategory', bookCategoryRouter);
 
 module.exports = router;

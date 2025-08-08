@@ -5,7 +5,7 @@ exports.getAllBorrowed = async (req , res , next) => {
     try{
          var borrowed = null;
 
-        if(req.query == '{}'){
+        if(Object.keys(req.query).length === 0){
             borrowed = await getAllBorrowed();
         }else{
             borrowed = await getAllBorrowedBy(req.query);

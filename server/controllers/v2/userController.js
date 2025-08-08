@@ -4,7 +4,7 @@ exports.getAllUsers =  async(req , res, next) => {
     try{
          var users = null;
         
-            if(req.query == '{}'){
+            if(Object.keys(req.query).length === 0){
                     users = await getAllUsers();
             }else{
                     users = await getUsersBy(req.query);

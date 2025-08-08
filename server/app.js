@@ -11,6 +11,7 @@ const session = require('express-session');
 const moment = require('moment');
 var flash = require('express-flash');
 var rateLimit = require('express-rate-limit');
+
 app.locals.moment = moment;
 const AppError = require('./utils/errors/AppError.js');
 
@@ -64,6 +65,7 @@ app.use(session({
 }));
 
 app.use(flash());
+
 
 // Setting up Routing middleware
 // app.use('/main/v1',  indexRouterV1);

@@ -3,7 +3,7 @@
   <!-- Banner Section -->
   <div class="px-4 md:px-8 md:mt-6">
 
-    <div class="md:flex md:flex-row md:justify-around md:w-full md:border md:border-black md:py-16 md:rounded-sm md:bg-primary">
+    <div class="md:flex md:flex-row md:justify-around md:w-full  md:py-16 md:rounded-sm md:bg-primary">
 
       <div class="md:flex md:flex-col md:w-1/2 md:justify-between md:h-72">
 
@@ -31,69 +31,44 @@
 
     </div>
 
+
   
     <!-- Trending Books -->
-    <div class="my-8 border-b-1 border-bottom border-gray-300 md:my-12 md:px-0">
+    <div class="my-8 border-b-1 border-bottom border-gray-300 md:my-12 md:px-0 md:pb-5">
 
       <div class="h-full w-full flex flex-row justify-between items-center">
         <h2 class="font-bold text-2xl">Trending</h2>
         <a href="#" class="font-poppins font-light hover-animation"> See All <span class="font-inter">--></span>  </a>
       </div>
 
-      <div class="h-full w-full flex flex-row gap-4 items-center my-8 overflow-x-auto pb-5 md:justify-between md:mb-12 md:flex-1 md:items-start">
+      <div class="h-full w-full flex flex-row gap-4 justify-between my-8 overflow-x-auto pb-5 md:justify-between md:mb-12 md:flex-1 md:items-start">
 
-        <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover.jpg)] "></div>
-          </div>
-          <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">Beyond the Ocean Door</p>
-        </div>
-
-        <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover_2.jpg)]"></div>
-          </div>
-          <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">Really good,Actually</p>
-        </div>
-
-        <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover_3.jpg)]"></div>
-          </div>
-          <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">The Boy with the Tiger's Heart</p>
-        </div>
-
-        <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover_4.jpg)]"></div>
-          </div>
-          <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">A Chorus of Swords</p>
-        </div>
-
-        <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover_5.jpg)]"></div>
-          </div>
-          <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">The Silverblood Promise</p>
-        </div>
-
-        <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover_6.jpg)]"></div>
-          </div>
-          <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">Breaking the Ice</p>
-        </div>
+      <% if (data.books.length) { %>
+          <% data.books.forEach(book => { %>
+            <div class="card-showcase group">
+              <div class="card-container">
+                <div class="card-img " style='background-image: url("<%= encodeURIComponent(book.img_url) %>")'>
+                
+                </div>
+              </div>
+              <p class="book-title"><%=book.book_nm%></p>
+              <div class="px-1 mt-4 flex flex-row justify-start">
+                <button class="nav-btn-2 w-[90%] bg-accent text-white">Borrow now</button>
+              </div>
+            </div>
+            
+          <% }) %>
+      <% }%>
 
 
-        
-      </div>
+      </div> 
 
     </div>
   </div>
   
 
   <!-- World of Books Section -->
-  <div class="flex flex-col px-8 md:h-100 md:mb-20">
+  <div class="flex flex-col px-8 md:h-100 md:mb-30 md:mt-20">
     <div class="md:flex md:flex-row md:gap-24">
 
       <div class="flex flex-col gap-8 mb-8 md:w-2/3 h-full md:justify-end">
@@ -117,7 +92,7 @@
    <div class="my-8 w-full md:mb-40">
 
     <div class="h-fit w-full bg-dark_primary py-6 my-8">
-      <h2 class="font-poppins font-bold tracking-wide text-white text-center">Discover Books from your favorite genres</h2>
+      <h2 class="font-poppins font-bold tracking-wide text-white text-center md:text-2xl">Discover Books from your favorite genres</h2>
     </div>
 
     <div class="px-4 w-full md:flex md:flex-col md:justify-center md:px-20">
@@ -132,48 +107,65 @@
         <div class="h-full w-full flex flex-row gap-4 items-center my-8 overflow-x-auto pb-5 md:justify-between md:mb-12">
           
           <div class="card-showcase group">
-            <div class="card-container">
-              <div class="card-img bg-[url(/images/book_cover_6.jpg)]"></div>
-            </div>
-            <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">Breaking the Ice</p>
+          <div class="card-container">
+            <div class="card-img bg-[url(/images/book_cover.jpg)] "></div>
           </div>
-
-          
-          <div class="card-showcase group">
-            <div class="card-container">
-              <div class="card-img bg-[url(/images/book_cover_6.jpg)]"></div>
-            </div>
-            <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">Breaking the Ice</p>
+          <p class="book-title">Beyond the Ocean Door</p>
+          <div class="px-1 mt-4 flex flex-row justify-start">
+             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
           </div>
+        </div>
 
-          
-          <div class="card-showcase group">
-            <div class="card-container">
-              <div class="card-img bg-[url(/images/book_cover_6.jpg)]"></div>
-            </div>
-            <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">Breaking the Ice</p>
+        <div class="card-showcase group">
+          <div class="card-container">
+            <div class="card-img bg-[url(/images/book_cover_2.jpg)] "></div>
           </div>
-
-          <div class="card-showcase group">
-            <div class="card-container">
-              <div class="card-img bg-[url(/images/book_cover_6.jpg)]"></div>
-            </div>
-            <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">Breaking the Ice</p>
+          <p class="book-title">Really good, Actually</p>
+          <div class="px-1 mt-4 flex flex-row justify-start">
+             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
           </div>
+        </div>
 
-          <div class="card-showcase group">
-            <div class="card-container">
-              <div class="card-img bg-[url(/images/book_cover_6.jpg)]"></div>
-            </div>
-            <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">Breaking the Ice</p>
+        <div class="card-showcase group">
+          <div class="card-container">
+            <div class="card-img bg-[url(/images/book_cover_4.jpg)] "></div>
           </div>
+          <p class="book-title">A Chorus of Swords</p>
+          <div class="px-1 mt-4 flex flex-row justify-start">
+             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
+          </div>
+        </div>
 
-          <div class="card-showcase group">
-            <div class="card-container">
-              <div class="card-img bg-[url(/images/book_cover_6.jpg)]"></div>
-            </div>
-            <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">Breaking the Ice</p>
-          </div>          
+        <div class="card-showcase group">
+          <div class="card-container">
+            <div class="card-img bg-[url(/images/book_cover_5.jpg)] "></div>
+          </div>
+          <p class="book-title">The Silverblood Promise</p>
+          <div class="px-1 mt-4 flex flex-row justify-start">
+             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
+          </div>
+        </div>
+
+        <div class="card-showcase group">
+          <div class="card-container">
+            <div class="card-img bg-[url(/images/book_cover_6.jpg)] "></div>
+          </div>
+          <p class="book-title">Breaking the Ice</p>
+          <div class="px-1 mt-4 flex flex-row justify-start">
+             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
+          </div>
+        </div>
+
+         <div class="card-showcase group">
+          <div class="card-container">
+            <div class="card-img bg-[url(/images/book_cover_7.jpg)] "></div>
+          </div>
+          <p class="book-title">The Age of Storms 2</p>
+          <div class="px-1 mt-4 flex flex-row justify-start">
+            <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
+          </div>
+        </div>
+
         
         </div>
       </div>
@@ -189,48 +181,64 @@
         <div class="h-full w-full flex flex-row gap-4 items-center my-8 overflow-x-auto pb-5 md:justify-between md:mb-12">
         
           <div class="card-showcase group">
-            <div class="card-container">
-              <div class="card-img bg-[url(/images/book_cover_6.jpg)]"></div>
-            </div>
-            <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">Breaking the Ice</p>
+          <div class="card-container">
+            <div class="card-img bg-[url(/images/book_cover.jpg)] "></div>
           </div>
-
-          
-          <div class="card-showcase group">
-            <div class="card-container">
-              <div class="card-img bg-[url(/images/book_cover_6.jpg)]"></div>
-            </div>
-            <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">Breaking the Ice</p>
+          <p class="book-title">Beyond the Ocean Door</p>
+          <div class="px-1 mt-4 flex flex-row justify-start">
+             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
           </div>
+        </div>
 
-          
-          <div class="card-showcase group">
-            <div class="card-container">
-              <div class="card-img bg-[url(/images/book_cover_6.jpg)]"></div>
-            </div>
-            <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">Breaking the Ice</p>
+        <div class="card-showcase group">
+          <div class="card-container">
+            <div class="card-img bg-[url(/images/book_cover_2.jpg)] "></div>
           </div>
-
-          <div class="card-showcase group">
-            <div class="card-container">
-              <div class="card-img bg-[url(/images/book_cover_6.jpg)]"></div>
-            </div>
-            <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">Breaking the Ice</p>
+          <p class="book-title">Really good, Actually</p>
+          <div class="px-1 mt-4 flex flex-row justify-start">
+             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
           </div>
+        </div>
 
-          <div class="card-showcase group">
-            <div class="card-container">
-              <div class="card-img bg-[url(/images/book_cover_6.jpg)]"></div>
-            </div>
-            <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">Breaking the Ice</p>
+        <div class="card-showcase group">
+          <div class="card-container">
+            <div class="card-img bg-[url(/images/book_cover_4.jpg)] "></div>
           </div>
+          <p class="book-title">A Chorus of Swords</p>
+          <div class="px-1 mt-4 flex flex-row justify-start">
+             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
+          </div>
+        </div>
 
-          <div class="card-showcase group">
-            <div class="card-container">
-              <div class="card-img bg-[url(/images/book_cover_6.jpg)]"></div>
-            </div>
-            <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">Breaking the Ice</p>
-          </div>          
+        <div class="card-showcase group">
+          <div class="card-container">
+            <div class="card-img bg-[url(/images/book_cover_5.jpg)] "></div>
+          </div>
+          <p class="book-title">The SilverBlood Promise</p>
+          <div class="px-1 mt-4 flex flex-row justify-start">
+             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
+          </div>
+        </div>
+
+        <div class="card-showcase group">
+          <div class="card-container">
+            <div class="card-img bg-[url(/images/book_cover_6.jpg)] "></div>
+          </div>
+          <p class="book-title">Breaking the Ice</p>
+          <div class="px-1 mt-4 flex flex-row justify-start">
+             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
+          </div>
+        </div>
+
+         <div class="card-showcase group">
+          <div class="card-container">
+            <div class="card-img bg-[url(/images/book_cover_7.jpg)] "></div>
+          </div>
+          <p class="book-title">The Age of Storms 2</p>
+          <div class="px-1 mt-4 flex flex-row justify-start">
+            <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
+          </div>
+        </div>
 
         </div>
 
@@ -246,48 +254,64 @@
         <div class="h-full w-full flex flex-row gap-4 items-center my-8 overflow-x-auto pb-5 md:justify-between md:mb-12">
         
           <div class="card-showcase group">
-            <div class="card-container">
-              <div class="card-img bg-[url(/images/book_cover_6.jpg)]"></div>
-            </div>
-            <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">Breaking the Ice</p>
+          <div class="card-container">
+            <div class="card-img bg-[url(/images/book_cover.jpg)] "></div>
           </div>
-
-          
-          <div class="card-showcase group">
-            <div class="card-container">
-              <div class="card-img bg-[url(/images/book_cover_6.jpg)]"></div>
-            </div>
-            <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">Breaking the Ice</p>
+          <p class="book-title">Beyond the Ocean Door</p>
+          <div class="px-1 mt-4 flex flex-row justify-start">
+             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
           </div>
+        </div>
 
-          
-          <div class="card-showcase group">
-            <div class="card-container">
-              <div class="card-img bg-[url(/images/book_cover_6.jpg)]"></div>
-            </div>
-            <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">Breaking the Ice</p>
+        <div class="card-showcase group">
+          <div class="card-container">
+            <div class="card-img bg-[url(/images/book_cover_2.jpg)] "></div>
           </div>
-
-          <div class="card-showcase group">
-            <div class="card-container">
-              <div class="card-img bg-[url(/images/book_cover_6.jpg)]"></div>
-            </div>
-            <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">Breaking the Ice</p>
+          <p class="book-title">Really good, Actually</p>
+          <div class="px-1 mt-4 flex flex-row justify-start">
+             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
           </div>
+        </div>
 
-          <div class="card-showcase group">
-            <div class="card-container">
-              <div class="card-img bg-[url(/images/book_cover_6.jpg)]"></div>
-            </div>
-            <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">Breaking the Ice</p>
+        <div class="card-showcase group">
+          <div class="card-container">
+            <div class="card-img bg-[url(/images/book_cover_4.jpg)] "></div>
           </div>
+          <p class="book-title">A Chorus of Swords</p>
+          <div class="px-1 mt-4 flex flex-row justify-start">
+             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
+          </div>
+        </div>
 
-          <div class="card-showcase group">
-            <div class="card-container">
-              <div class="card-img bg-[url(/images/book_cover_6.jpg)]"></div>
-            </div>
-            <p class="hidden md:block md:px-1 md:mt-4 md:font-light md:font-outfit md:truncate md:w-full">Breaking the Ice</p>
-          </div>          
+        <div class="card-showcase group">
+          <div class="card-container">
+            <div class="card-img bg-[url(/images/book_cover_5.jpg)] "></div>
+          </div>
+          <p class="book-title">The Silverblood Promise</p>
+          <div class="px-1 mt-4 flex flex-row justify-start">
+             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
+          </div>
+        </div>
+
+        <div class="card-showcase group">
+          <div class="card-container">
+            <div class="card-img bg-[url(/images/book_cover_6.jpg)] "></div>
+          </div>
+          <p class="book-title">Breaking the Ice</p>
+          <div class="px-1 mt-4 flex flex-row justify-start">
+             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
+          </div>
+        </div>
+
+         <div class="card-showcase group">
+          <div class="card-container">
+            <div class="card-img bg-[url(/images/book_cover_7.jpg)] "></div>
+          </div>
+          <p class="book-title">The Age of Storms 2</p>
+          <div class="px-1 mt-4 flex flex-row justify-start">
+            <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
+          </div>
+        </div>
 
         </div>
 

@@ -1,4 +1,4 @@
-const { getAllBooks, getBookById, addBook, editBook, getTotalBooks} = require('../../services/v2/bookService');
+const { getAllBooks, getBookById, addBook, editBook, getTotalBooks, getAllBooksWithCategories} = require('../../services/v2/bookService');
 
 exports.getAllBooks = async (req , res , next) => {
     try{
@@ -75,6 +75,21 @@ exports.getTotalBooks = async (req, res, next) => {
 
     }catch(err){
        next(err)
+    }
+}
+
+exports.getBooksWithCategories = async (req, res, next) => {
+    try{
+        const books = await getAllBooksWithCategories();
+
+        res.status(200).json({
+            status: res.statusCode ?? 201,
+            message : "Retrieved Successfully , Books retrieved with categories",
+            body: books
+         });
+
+    }catch(err){
+        next(err);
     }
 }
 

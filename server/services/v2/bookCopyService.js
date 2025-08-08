@@ -15,6 +15,7 @@ exports.getAllCopiesBy = async (query) => {
 }
 
 exports.addCopy = async (id , data) => {
+    
     const copy_numbers =  await getBy(knex, 'book_copy', {book_id :id}, 'copy_num');
 
     if(data.num_copies < 0) throw new AppError('Number of Copies must be greater than 0', 400)
@@ -30,9 +31,10 @@ exports.addCopy = async (id , data) => {
         body.copy_num = generateBookCopyNumber(id);
         var count = 0;
 
-        while(copy_numbers.includes(body.copy_num) || count < 10000){
+        //Validation to ensure copy_num stored in the database is unique
+        while(copy_numbers.includes(body.copy_num) || count < 1000){
             body.copy_num = generateBookCopyNumber(id)
-            count++;
+            count++; // Reruns 1000 times before stop trying to stop creating a new copy_num
         }
 
         const copy = await knex('public.book_copy').returning(['book_id' , 'copy_num']).insert(body)
