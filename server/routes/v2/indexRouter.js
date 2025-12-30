@@ -208,15 +208,13 @@ router.get('/add_book', async (req,res,next) => {
                 
             }else{
                 console.error('API Error:', error.response.data);
-                res.status(500).send('Error Loading Page: ' + 'API Error 2: ' + JSON.stringify( error.response.data ));
+                res.render(`${rootViewFolder}error`, {title:'Libby - Error Page' , data:error.response.data, haveNavbar : false});
             }
 
         } else {
-              console.error('API Error 3:', error);
-
-            // detail = 'Unexpected Error: ' + error.message
-            // console.error('Unexpected Error:', error.message);
-            // res.render(`${rootViewFolder}error`, {title:"Error Page" , data:error , detail:detail,  haveNavbar : true});
+              console.error('API Error:', error);
+              detail = 'Unexpected Error: ' + error.message
+              res.render(`${rootViewFolder}error`, {title:"Error Page" , data:error , detail:detail,  haveNavbar : true});
         }
     }
 });
