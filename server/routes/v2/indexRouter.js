@@ -204,7 +204,8 @@ router.get('/add_book', async (req,res,next) => {
 
             if(error.response.data.status == 401 || 429){
                 console.error('API Error:', error.response.data);
-                res.render(`${rootViewFolder}error`, {title:'Libby - Error Page' , data:error.response.data, haveNavbar : false});
+                res.status(500).send('Error Loading Page: ' + 'API Error: ' + JSON.stringify( error.response.data ));
+                
             }else{
                 console.error('API Error:', error.response.data);
                 res.render(`${rootViewFolder}error`, {title:'Libby - Error Page' , data:error.response.data, haveNavbar : false});
