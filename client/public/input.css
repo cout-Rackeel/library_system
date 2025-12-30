@@ -33,6 +33,10 @@
         @apply font-inter font-semibold hidden lg:block 
     }
 
+    .input-label-2{
+        @apply font-inter font-semibold 
+    }
+
     /* .image-contain-center{
         @apply bg-contain bg-center bg-no-repeat
     } */
@@ -50,9 +54,17 @@
 
     }
 
+    .card-row-between{
+        @apply h-full w-full flex flex-row gap-4 items-center my-8 overflow-x-auto pb-5 md:justify-between md:mb-12
+    }
+
+    .card-row-start{
+        @apply h-full w-full flex flex-row gap-4 items-center my-8 overflow-x-auto pb-5 md:justify-start md:mb-12
+    }
+
     .card-img{
-        @apply h-full w-full
-               bg-contain bg-center bg-no-repeat
+        @apply h-full w-full px-1 
+               object-contain object-center 
                transition delay-50 duration-250 ease-in-out group-hover:cursor-pointer group-hover:-translate-y-10 group-hover:scale-100
     }
 
@@ -65,11 +77,81 @@
     }
 
     .book-title{
-        @apply pl-2 md:px-1 mt-4 font-outfit truncate w-30  md:w-full 
+        @apply pl-2 md:px-1 mt-4 font-outfit truncate w-30 md:w-full 
     }
 
     /* .card-animation{
         @apply transition delay-50 duration-250 ease-in-out group-hover:cursor-pointer group-hover:-translate-y-10 group-hover:scale-100
+    } */
+
+    .cards{
+        @apply py-10 w-full 
+    }
+    .cards tbody {
+    @apply  flex h-84 flex-wrap justify-between
+    }
+    .cards tbody tr {
+    @apply h-58 w-42 flex flex-col bg-white relative hover:cursor-pointer z-10;
+    }
+    .cards tbody td {
+    @apply w-fit flex flex-col items-start;
+    }
+    .cards tbody tr td span {
+        @apply w-40 font-outfit text-gray-700 truncate 
+    }
+    .cards tbody tr td img {
+        @apply h-58 w-42 object-fill object-center z-10 transition delay-50 duration-250 ease-in-out group-hover:cursor-pointer group-hover:-translate-y-10 group-hover:scale-100
+    }
+
+    .cards tbody tr td .ratings{
+        @apply absolute top-55 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 w-full flex flex-row justify-center
+    }
+
+     /* RATING */
+
+     .full-star{
+        @apply bg-[url(/images/star_rate_gold.svg)] bg-cover bg-center bg-no-repeat h-6 w-6 
+     }
+
+     .half-star{
+         @apply bg-[url(/images/star_rate_half_gold.svg)] bg-cover bg-center bg-no-repeat h-6 w-6 
+     }
+
+     .empty-star{
+         @apply bg-[url(/images/star_rate.svg)] bg-cover bg-center bg-no-repeat h-6 w-6  
+     }
+
+     
+
+    .paginate_button {
+        @apply font-outfit text-sm bg-transparent
+    }
+
+    .paginate_button.current{
+       @apply text-white
+    }
+    
+    /* Hide by default (mobile) */
+    .dataTables_paginate, .dt-paging , .dataTables_info {
+        display: none !important;
+    }
+
+    /* Show on medium screens and up */
+    @media (min-width: 768px) { /* md breakpoint in default Tailwind config */
+        .dataTables_paginate, .dt-paging , .dataTables_info {
+            display: block !important; /* or flex, depending on the layout */
+        }
+
+        .dataTables_info {
+        @apply font-outfit tracking-wide font-light
+        }
+    }
+
+    
+
+
+    /* .cards tbody td div button {
+        @apply nav-btn-2 w-[90%] bg-accent text-white    
     } */
 
     .nav-btn{
@@ -78,7 +160,7 @@
     }
 
        .nav-btn-2{
-        @apply flex flex-col items-center justify-center h-10 px-2 text-center font-outfit rounded-sm 
+        @apply w-full flex flex-col items-center justify-center h-10 px-2 text-center font-outfit rounded-sm 
         transition delay-150 duration-300 ease-in-out hover:cursor-pointer hover:-translate-y-1 hover:scale-105
     }
 
@@ -97,6 +179,8 @@
         after:rounded-md 
     }
 
+   
+
 
     /* GENRES */
 
@@ -110,4 +194,5 @@
 
     
 }
+
 

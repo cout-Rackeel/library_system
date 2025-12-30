@@ -1,49 +1,53 @@
-  <div class="w-[40%] border border-gray-300 p-10 ml-10 bg-white/50 rounded-sm">
+<div class="w-full flex flex-col justify-center mt-10 md:flex-row md:mt-0">
+    <div class=" w-[80%] md:w-[40%]  border border-gray-300 p-10 ml-10 bg-white/50 rounded-sm">
     <h1 class=" font-bold font-poppins text-2xl mb-10">Upload to Book Library</h1>
   <form class="w-full" action="/add_book " method="POST" enctype="multipart/form-data">
 
     <div class="my-5">
-      <label class="input-label" for="book_nm">Book Name</label>
-      <input type="text" name="book_nm" class="input-btn" required />
+      <label class="input-label-2" for="book_nm">Book Name</label>
+      <input type="text" name="book_nm" class="input-btn" placeholder="Book Name" required />
     </div>
 
     <div class="my-5">
-      <label class="input-label" for="publisher">Publisher</label>
-      <input type="text" name="publisher" class="input-btn" required >
+      <label class="input-label-2" for="publisher">Publisher</label>
+      <input type="text" name="publisher" class="input-btn" placeholder="Publisher"required >
     </div>
 
     <div class="my-5">
-      <label class="input-label" for="author">Author</label>
-      <input type="text" name="author" class="input-btn" required >
+      <label class="input-label-2" for="author">Author</label>
+      <input type="text" name="author" class="input-btn" placeholder="Author" required >
     </div>
 
     <div class="my-5">
-      <label class="input-label" for="tot_copies">Total Copies</label>
-      <input type="number" name="tot_copies" class="input-btn" required >
+      <label class="input-label-2" for="tot_copies">Total Copies</label>
+      <input type="number" name="tot_copies" class="input-btn" placeholder="Total Copies" required >
     </div>
 
     <div class="my-5">
-      <label class="input-label" for="book_img">Book Image</label>
-       <input type="file" name="book_img" class="input-btn" id="book_img" required />
+      <label class="input-label-2" for="book_img">Book Image</label>
+       <input type="file" name="book_img" class="input-btn" id="book_img" placeholder="Book Image" required />
     </div>
 
     <div class="my-5">
-      <label class="input-label" for="book_cats">Book Categories</label>
-      <div class="md:flex md:flex-row md:w-full md:gap-4 md:flex-wrap md:mt-2">
+      <label class="input-label-2" for="book_cats">Book Categories</label>
+      <div class="flex flex-col h-50 flex-wrap space-x-3 space-y-3 
+      md:flex-row md:w-full md:gap-4 mt-2 md:space-x-0 md:space-y-0 md:h-full">
         
       <% if (data.length) { %>
           <% data.forEach(category => { %>
-             <div class="md:flex md:flex-row md:items-center md:gap-2">
-              <label for="<%=category.cat_nm%>"class="capitalize"><%=category.cat_nm%></label>
-              <input type="checkbox" name="categories" value="<%=category.cat_id%>" class="mt-1"/>
+             <div class="flex flex-row items-center gap-2">
+              <label for="<%=category.cat_nm%>"class="capitalize font-inter"><%=category.cat_nm%></label>
+              <input type="checkbox" name="categories" value="<%=category.cat_id%>" class=" mt-1"/>
             </div>
           <% }) %>
       <% }%>
 
       </div>
     </div>
+
+
     
-    <button class="nav-btn-2 bg-accent mt-10 w-1/3  font-semibold text-white" type="submit">Upload</button>
+    <button class="nav-btn-2 bg-accent w-1/3 font-semibold text-white md:mt-10" type="submit">Upload</button>
   </form>
 
 
@@ -53,3 +57,5 @@
   <% } %> -->
   </div>
   
+
+</div>

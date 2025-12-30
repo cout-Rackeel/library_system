@@ -1,4 +1,4 @@
- <div>  <!-- START CONTAINER -->
+<div>  <!-- START CONTAINER -->
 
   <!-- Banner Section -->
   <div class="px-4 md:px-8 md:mt-6">
@@ -8,11 +8,17 @@
       <div class="md:flex md:flex-col md:w-1/2 md:justify-between md:h-72">
 
           <div class="relative mt-5 mb-10 md:order-3 md:my-0 md:mt-0 md:flex md:flex-row md:items-end md:gap-4">
-            <input type="input" name="search" id="search" placeholder="Search for Book..." value="<%=data.search%>" class=" input-btn h-[2.625rem]  font-outfit font-light px-12 md:w-3/5" required>
-            <!-- <svg class="w-4 h-4 absolute top-1/2 -translate-y-1/2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+
+            <span class="w-4 h-4 absolute top-1/2 -translate-y-1/2 translate-x-3 material-symbols-outlined text-gray-400 hover:cursor-pointer" onclick="alert('Search feature to be implemented')"> search
+            </span>
+
+            <input type="input" name="search" id="search" placeholder="Search for Book..." value="<%=data.search%>" class=" input-btn h-[2.625rem]  font-outfit font-light px-12 md:w-3/5" required >
+            <!-- <svg class="w-4 h-4 absolute top-1/2 -translate-y-1/4 translate-x-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                     <path c stroke="#6C63FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
             </svg> -->
-            <button class="hidden md:block md:h-[2.625rem] md:w-1/6 md:btn-1 md:p-2 md:font-outfit md:bg-accent md:rounded-sm  md:text-white">Search</button>
+
+        
+            <button class="hidden md:block md:h-[2.625rem] md:w-1/6 md:btn-1 md:p-2 md:font-outfit md:bg-accent md:rounded-sm  md:text-white hover-animation" onclick="alert('Function to be implemented')" >Search</button>
           </div>
 
           <h1 class="font-bold font-outfit text-2xl text-center my-8 md:text-left md:text-5xl md:order-1 md:my-0 md:3.5/5 md:text-white">
@@ -20,7 +26,7 @@
           </h1>
  
           <p class="font-light font-outfit text-md text-center my-8 md:text-left md:order-2 md:my-0 md:w-2/3 md:text-white">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet laborum vel voluptatum pariatur facilis,
+            Discover endless knowledge, resources, and stories—accessible anytime, anywhere, without limits.
           </p>
 
       </div>
@@ -37,26 +43,26 @@
     <div class="my-8 border-b-1 border-bottom border-gray-300 md:my-12 md:px-0 md:pb-5">
 
       <div class="h-full w-full flex flex-row justify-between items-center">
-        <h2 class="font-bold text-2xl">Trending</h2>
-        <a href="#" class="font-poppins font-light hover-animation"> See All <span class="font-inter">--></span>  </a>
+        <h2 class="font-outfit font-bold text-2xl">Trending</h2>
+        <a href="/bookshop" class="font-poppins font-light hover-animation"> See All <span class="font-inter">--></span>  </a>
       </div>
 
       <div class="h-full w-full flex flex-row gap-4 justify-between my-8 overflow-x-auto pb-5 md:justify-between md:mb-12 md:flex-1 md:items-start">
 
       <% if (data.books.length) { %>
           <% data.books.forEach(book => { %>
-            <div class="card-showcase group">
-              <div class="card-container">
-                <div class="card-img " style='background-image: url("<%= book.img_url %>")'>
-                
+            <% if (book.is_trending) { %>
+              <div class="card-showcase group">
+                <div class="card-container">
+                  <img class="card-img" src="<%=book.img_url%>" ></img>
+                </div>
+                <p class="book-title"><%=book.book_nm%></p>
+                <div class="px-1 mt-4 flex flex-row justify-start">
+                  <button class="nav-btn-2 w-[90%] bg-accent text-white" onclick="alert('Function to be implemented')">Borrow now</button>
                 </div>
               </div>
-              <p class="book-title"><%=book.book_nm%></p>
-              <div class="px-1 mt-4 flex flex-row justify-start">
-                <button class="nav-btn-2 w-[90%] bg-accent text-white">Borrow now</button>
-              </div>
-            </div>
-            
+            <%}%>
+    
           <% }) %>
       <% }%>
 
@@ -101,73 +107,31 @@
 
         <div class="genre-heading bg-comedy_yellow">
           <h3 class="genre-text">Comedy</h3>
-          <a href="#" class="font-outfit font-light hover-animation"> See All <span class="font-inter">--></span>  </a>
+          <a href="/bookshop" class="font-outfit font-light hover-animation"> See All <span class="font-inter">--></span>  </a>
         </div>
 
         <div class="h-full w-full flex flex-row gap-4 items-center my-8 overflow-x-auto pb-5 md:justify-between md:mb-12">
-          
-          <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover.jpg)] "></div>
-          </div>
-          <p class="book-title">Beyond the Ocean Door</p>
-          <div class="px-1 mt-4 flex flex-row justify-start">
-             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
-          </div>
+          <% if (data.books.length) { %>
+            <% data.books.forEach(book => { %>
+                <% if (book.categories.includes('bkcat_000005')) { %>
+                    <div class="card-showcase group">
+                      <div class="card-container">
+                        <img class="card-img" src="<%=book.img_url%>" ></img>
+                      </div>
+                      <p class="book-title"><%=book.book_nm%></p>
+                      <div class="px-1 mt-4 flex flex-row justify-start">
+                        <button class="nav-btn-2 w-[90%] bg-accent text-white" onclick="alert('Function to be implemented')">Borrow now</button>
+                      </div>
+
+                      <!-- TODO:  IMPLEMENT RATING SYSTEM  -->
+                      <!--  <div class="ratings" data-rating-id="<%=book.book_id%>" data-rating-score="<%=book.rating_score ?? 0 %>"></div> -->
+                     
+                    </div>
+                <%}%>
+            <% }) %>
+          <% }%>
         </div>
 
-        <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover_2.jpg)] "></div>
-          </div>
-          <p class="book-title">Really good, Actually</p>
-          <div class="px-1 mt-4 flex flex-row justify-start">
-             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
-          </div>
-        </div>
-
-        <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover_4.jpg)] "></div>
-          </div>
-          <p class="book-title">A Chorus of Swords</p>
-          <div class="px-1 mt-4 flex flex-row justify-start">
-             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
-          </div>
-        </div>
-
-        <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover_5.jpg)] "></div>
-          </div>
-          <p class="book-title">The Silverblood Promise</p>
-          <div class="px-1 mt-4 flex flex-row justify-start">
-             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
-          </div>
-        </div>
-
-        <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover_6.jpg)] "></div>
-          </div>
-          <p class="book-title">Breaking the Ice</p>
-          <div class="px-1 mt-4 flex flex-row justify-start">
-             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
-          </div>
-        </div>
-
-         <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover_7.jpg)] "></div>
-          </div>
-          <p class="book-title">The Age of Storms 2</p>
-          <div class="px-1 mt-4 flex flex-row justify-start">
-            <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
-          </div>
-        </div>
-
-        
-        </div>
       </div>
 
 
@@ -175,150 +139,59 @@
 
         <div class="genre-heading bg-action_orange">
           <h3 class="genre-text">Action & Adventure</h3>
-          <a href="#" class="font-outfit font-light hover-animation"> See All <span class="font-inter">--></span>  </a>
+          <a href="/bookshop" class="font-outfit font-light hover-animation"> See All <span class="font-inter">--></span>  </a>
         </div>
 
         <div class="h-full w-full flex flex-row gap-4 items-center my-8 overflow-x-auto pb-5 md:justify-between md:mb-12">
         
-          <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover.jpg)] "></div>
-          </div>
-          <p class="book-title">Beyond the Ocean Door</p>
-          <div class="px-1 mt-4 flex flex-row justify-start">
-             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
-          </div>
-        </div>
-
-        <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover_2.jpg)] "></div>
-          </div>
-          <p class="book-title">Really good, Actually</p>
-          <div class="px-1 mt-4 flex flex-row justify-start">
-             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
-          </div>
-        </div>
-
-        <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover_4.jpg)] "></div>
-          </div>
-          <p class="book-title">A Chorus of Swords</p>
-          <div class="px-1 mt-4 flex flex-row justify-start">
-             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
-          </div>
-        </div>
-
-        <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover_5.jpg)] "></div>
-          </div>
-          <p class="book-title">The SilverBlood Promise</p>
-          <div class="px-1 mt-4 flex flex-row justify-start">
-             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
-          </div>
-        </div>
-
-        <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover_6.jpg)] "></div>
-          </div>
-          <p class="book-title">Breaking the Ice</p>
-          <div class="px-1 mt-4 flex flex-row justify-start">
-             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
-          </div>
-        </div>
-
-         <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover_7.jpg)] "></div>
-          </div>
-          <p class="book-title">The Age of Storms 2</p>
-          <div class="px-1 mt-4 flex flex-row justify-start">
-            <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
-          </div>
-        </div>
-
-        </div>
+          <% if (data.books.length) { %>
+            <% data.books.forEach(book => { %>
+                <% if (book.categories.includes('bkcat_000003')) { %>
+                    <div class="card-showcase group">
+                      <div class="card-container">
+                        <img class="card-img" src="<%=book.img_url%>" ></img>
+                      </div>
+                      <p class="book-title"><%=book.book_nm%></p>
+                      <div class="px-1 mt-4 flex flex-row justify-start">
+                        <button class="nav-btn-2 w-[90%] bg-accent text-white" onclick="alert('Function to be implemented')">Borrow now</button>
+                      </div>
+                    </div>
+                <%}%>
+            <% }) %>
+          <% }%>
+    
 
       </div>
 
-      <div class="" id="scifi-sec">
+      <div class="" id="fiction-sec">
 
-        <div class="genre-heading bg-scifi">
-          <h3 class="genre-text">Science Fiction</h3>
-          <a href="#" class="font-outfit font-light hover-animation"> See All <span class="font-inter">--></span>  </a>
+        <div class="genre-heading bg-fiction">
+          <h3 class="genre-text">Fiction</h3>
+          <a href="/bookshop" class="font-outfit font-light hover-animation"> See All <span class="font-inter">--></span>  </a>
         </div>
 
         <div class="h-full w-full flex flex-row gap-4 items-center my-8 overflow-x-auto pb-5 md:justify-between md:mb-12">
         
-          <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover.jpg)] "></div>
-          </div>
-          <p class="book-title">Beyond the Ocean Door</p>
-          <div class="px-1 mt-4 flex flex-row justify-start">
-             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
-          </div>
-        </div>
-
-        <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover_2.jpg)] "></div>
-          </div>
-          <p class="book-title">Really good, Actually</p>
-          <div class="px-1 mt-4 flex flex-row justify-start">
-             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
-          </div>
-        </div>
-
-        <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover_4.jpg)] "></div>
-          </div>
-          <p class="book-title">A Chorus of Swords</p>
-          <div class="px-1 mt-4 flex flex-row justify-start">
-             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
-          </div>
-        </div>
-
-        <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover_5.jpg)] "></div>
-          </div>
-          <p class="book-title">The Silverblood Promise</p>
-          <div class="px-1 mt-4 flex flex-row justify-start">
-             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
-          </div>
-        </div>
-
-        <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover_6.jpg)] "></div>
-          </div>
-          <p class="book-title">Breaking the Ice</p>
-          <div class="px-1 mt-4 flex flex-row justify-start">
-             <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
-          </div>
-        </div>
-
-         <div class="card-showcase group">
-          <div class="card-container">
-            <div class="card-img bg-[url(/images/book_cover_7.jpg)] "></div>
-          </div>
-          <p class="book-title">The Age of Storms 2</p>
-          <div class="px-1 mt-4 flex flex-row justify-start">
-            <button class="nav-btn-2 w-[90%] bg-accent text-white"> Borrow now</button>
-          </div>
-        </div>
-
-        </div>
+          <% if (data.books.length) { %>
+            <% data.books.forEach(book => { %>
+                <% if (book.categories.includes('bkcat_000001')) { %>
+                    <div class="card-showcase group">
+                      <div class="card-container">
+                        <img class="card-img" src="<%=book.img_url%>" ></img>
+                      </div>
+                      <p class="book-title"><%=book.book_nm%></p>
+                      <div class="px-1 mt-4 flex flex-row justify-start">
+                        <button class="nav-btn-2 w-[90%] bg-accent text-white" onclick="alert('Function to be implemented')">Borrow now</button>
+                      </div>
+                    </div>
+                <%}%>
+            <% }) %>
+          <% }%>
 
       </div>
 
 
-      <a href="/signup" class="block w-full cta-btn"> View All</a>
+      <a href="/signup" class="block w-full cta-btn mb-10"> View All</a>
       
     </div>
 
@@ -327,16 +200,89 @@
  </div> <!-- END CONTAINER -->
 
 
+ <script>
+
+  function generateRatings(){
+    const min = 1; // lowest Rating
+    const max = 5; // highest Rating
+
+    rating = Math.random() * (max - min) + min;
+
+    return rating.toFixed(2);
+  }
+
+  function renderRatings(){
+    const ratingElements = Array.from(document.querySelectorAll(".ratings"));
+
+    ratingElements.forEach(elem => {
+
+      const bookId = elem.getAttribute('data-rating-id')
+      const ratingScore = elem.getAttribute('data-rating-score') == 0 ? generateRatings() : elem.getAttribute('data-rating-score') ; 
+
+      console.log(`\nBook ID: ${bookId} \n Rating Score: ${ratingScore}`)
+
+      if(ratingScore > 0 && ratingScore < 1.5){
+        elem.innerHTML = "⭐";
+      }
+
+      if(ratingScore >= 1.5 && ratingScore < 2.0){
+        elem.innerHTML = "⭐🌓";
+      }
+
+      if(ratingScore >= 2.0 && ratingScore < 2.5){
+        elem.innerHTML = "⭐⭐";
+      }
+
+      if(ratingScore >= 2.5 && ratingScore < 3.0){
+        elem.innerHTML = "⭐⭐🌓";
+      }
+
+      if(ratingScore >= 3.0 && ratingScore < 3.5){
+        elem.innerHTML = "⭐⭐⭐";
+      }
+
+       if(ratingScore >= 3.5 && ratingScore < 4.0){
+        elem.innerHTML = "⭐⭐⭐🌓";
+      }
+
+      if(ratingScore >= 4.0 && ratingScore < 4.5){
+        elem.innerHTML = "⭐⭐⭐⭐";
+      }
+
+      if(ratingScore >= 4.5 && ratingScore < 5.0){
+        elem.innerHTML = "⭐⭐⭐⭐🌓";
+      }
+
+      
+      if(ratingScore == 5){
+        elem.innerHTML = "⭐⭐⭐⭐⭐";
+      }
+
+    })
+ 
+   
 
 
 
 
+  }
 
+  
+$(document).ready(function () {
+ renderRatings();
+});
+
+
+</script>
+
+
+
+<!-- 
 <% if (data != null) { %>
   <p><%= JSON.stringify(data)%></p>
 <% }%>
   
-
+ -->
 
 
 

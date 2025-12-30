@@ -32,7 +32,7 @@ exports.addBook = async (bookBody) => {
             "publisher": bookBody.publisher,
             "author": bookBody.author,
             "img_url": bookBody.img_url,
-            "trending": 0
+            "is_trending": false
         };
 
         const pattern = /^(?:\d{3}-){2}\d{4}$/ // Regex for ID
@@ -148,6 +148,8 @@ exports.getAllBooksWithCategories = async () => {
 
     return result;
 }
+
+//TODO: Add a function to send all books with their associated rating scores
 
 exports.getTotalBooks = async (id) => {
 

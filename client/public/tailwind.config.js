@@ -12,7 +12,7 @@ module.exports = {
         dark_primary: 'hsl(245 17% 29%)',
         comedy_yellow: 'hsl(64 97% 69%)',
         action_orange: 'hsl(24 97% 69%)',
-        scifi: 'hsl(203 97% 69%)',
+        fiction: 'hsl(203 97% 69%)',
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],

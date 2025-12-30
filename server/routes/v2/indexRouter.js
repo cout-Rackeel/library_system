@@ -240,7 +240,8 @@ router.post('/add_book', multerMiddleware.single('book_img'), async (req,res,nex
             author: req.body.author,
             img_url: process.env.NODE_ENV == 'development' ? (process.env.R2_PUBLIC_URI + "/" + req.file.key) : (process.env.R2_PUBLIC_URI + "/" + req.file.key),
             categories: req.body.categories,
-            tot_copies: req.body.tot_copies
+            tot_copies: req.body.tot_copies,
+            trending:   false
         }
 
         // res.json(bookData);
@@ -268,5 +269,28 @@ router.post('/add_book', multerMiddleware.single('book_img'), async (req,res,nex
         }
     }
 })
+
+router.get('/bookshop' , async (req,res,next) => {
+    try{
+        
+
+        var booksResponse = await axios.get(formEndpoint('/api/v2/book/categories'));
+        var categoriesResponse = await axios.get(formEndpoint('/api/v2/category'));
+
+        const data = {
+            books : booksResponse.data.body,
+            categories : categoriesResponse.data.body
+        }
+
+        console.log(data);
+
+        res.render(`${rootViewFolder}bookshop` , {title:`${app_name} - Book Shop Page` , data:data, haveNavbar : true});
+    }catch(error){
+        res.status(500).send('Error Loading Page');
+        next(error)
+    }
+  
+});
+
 
 module.exports = router;
