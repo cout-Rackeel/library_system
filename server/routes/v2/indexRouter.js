@@ -73,16 +73,16 @@ router.post('/login' , async (req,res,next) => {
         if (error.response && error.response.data) {
 
             if(error.response.data.status == 401 || 429){
-                console.error('API Error:', error.response.data);
+                console.error('API Error:', error.response?.data || error.message);
                 res.render(`${rootViewFolder}login`, {title:`${app_name} - Login Page` , data:req.body , error:error.response.data, haveNavbar : false});
             }else{
-                console.error('API Error:', error.response.data);
-                res.render(`${rootViewFolder}error`, {title:`${app_name} - Error Page` , data:error.response.data, haveNavbar : false});
+                console.error('API Error:', error.response?.data || error.message);
+                res.render(`${rootViewFolder}error`, {title:`${app_name} - Error Page` , data:error.response?.data || error.message, haveNavbar : false});
             }
 
 
         } else {
-              console.error('API Error:', error);
+              console.error('API Error:', error.response?.data || error.message);
 
             // detail = 'Unexpected Error: ' + error.message
             // console.error('Unexpected Error:', error.message);
@@ -131,7 +131,7 @@ router.post('/signup' , async (req,res,next) => {
 
         if (error.response && error.response.data) {
 
-            if(error.response.data.status == 400 || 429){
+            if(error.response.data.status == 400 || error.response.data.status == 429){
                 console.error('API Error:', error.response.data);
                 res.render(`${rootViewFolder}signup`, {title:`${app_name} - Signup Page` , data:req.body , error:error.response.data, haveNavbar : false});
             }else{
@@ -189,7 +189,7 @@ router.get('/add_book', async (req,res,next) => {
         if( process.env.NODE_ENV == 'development'){
             endpoint = 'http://localhost:5500' + resource;
         }else{
-            endpoint = process.env.VERCEL_URI + resource;
+            endpoint =  resource;
         }
 
         var response = await axios.get(endpoint);
@@ -256,7 +256,7 @@ router.post('/add_book', multerMiddleware.single('book_img'), async (req,res,nex
 
         if (error.response && error.response.data) {
 
-            if(error.response.data.status == 400 || 429){
+            if(error.response.data.status == 400 || error.response.data.status ==429){
                 console.error('API Error:', error.response.data);
                 res.render(`${rootViewFolder}error`, {title:`${app_name} - Error Page` , data:req.body , error:error.response.data, haveNavbar : false});
             }else{
