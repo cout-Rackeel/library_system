@@ -36,7 +36,7 @@ router.get('/' , async (req,res,next) => {
 
         res.render(`${rootViewFolder}index` , {title:`${app_name} - Home Page` , data:data, haveNavbar : true});
     }catch(error){
-        res.status(500).send('Error Loading Page');
+        res.status(500).send('Error Loading Page' + JSON.stringify(error));
         // next(error)
     }
   

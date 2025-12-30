@@ -47,6 +47,10 @@ app.use(express.urlencoded({extended:true}));
 app.use(morgan('tiny')); // Logging
 
 
+//Allow Vercel reverse proxy
+app.set('trust proxy', true); 
+
+
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // Limit each IP to 100 requests per windowMs
@@ -104,6 +108,8 @@ const currentVersion = 'v2';
 // Listening to Port
 
 if(process.env.NODE_ENV == "development"){
+  app.listen(PORT , () => console.log(`Listening on port ${PORT} || http://localhost:5500/ ...`))
+}else{
   app.listen(PORT , () => console.log(`Listening on port ${PORT} || http://localhost:5500/ ...`))
 }
 
