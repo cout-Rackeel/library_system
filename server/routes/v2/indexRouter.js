@@ -36,9 +36,8 @@ router.get('/' , async (req,res,next) => {
 
         res.render(`${rootViewFolder}index` , {title:`${app_name} - Home Page` , data:data, haveNavbar : true});
     }catch(error){
-            detail = 'Unexpected Error: ' + error.message
-            res.render(`${rootViewFolder}error`, {title:"Error Page" , data:error , detail:detail,  haveNavbar : true});
-        next(error)
+        res.status(500).send('Error Loading Page');
+        // next(error)
     }
   
 });
@@ -48,7 +47,7 @@ router.get('/login' , async(req , res, next) => {
         res.render(`${rootViewFolder}login` , {title:`${app_name} - Login Page`, data:{}, error:{}, haveNavbar : false})
     }catch(error){
         res.status(500).send('Error Loading Page');
-        next(error)
+        // next(error)
     }
 })
 
@@ -100,7 +99,7 @@ router.get('/signup' , async(req , res, next) => {
         res.render(`${rootViewFolder}signup` , {title:`${app_name} - Signup Page` , data:{}, error:{}, haveNavbar : false})
     }catch(error){
         res.status(500).send('Error Loading Page');
-        next(error)
+        // next(error)
     }
 })
 
@@ -177,7 +176,7 @@ router.get('/users' , async (req,res,next) => {
     }catch(error){
 
         res.render('error', {title:"All Users" , data:error , haveNavbar : true});
-        next(error)
+        // next(error)
     }
 });
 
@@ -288,7 +287,7 @@ router.get('/bookshop' , async (req,res,next) => {
         res.render(`${rootViewFolder}bookshop` , {title:`${app_name} - Book Shop Page` , data:data, haveNavbar : true});
     }catch(error){
         res.status(500).send('Error Loading Page');
-        next(error)
+        // next(error)
     }
   
 });

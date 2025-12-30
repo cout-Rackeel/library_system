@@ -64,7 +64,11 @@
             <%}%>
     
           <% }) %>
-      <% }%>
+      <% } else {%>
+          <div>NO DATA?</div>
+          <p ><%=JSON.stringify(data)%></p>
+
+      <%}%>
 
 
       </div> 
