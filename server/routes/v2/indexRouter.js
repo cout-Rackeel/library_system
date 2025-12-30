@@ -184,8 +184,8 @@ router.get('/add_book', async (req,res,next) => {
     try{
     
         let resource = '/api/v2/category';
-       
-        var response = await axios.get(resource);
+
+        let response = await axios.get(resource);
 
         console.log(response);
 
@@ -203,13 +203,12 @@ router.get('/add_book', async (req,res,next) => {
                 
             }else{
                 console.error('API Error:', error.response.data);
-                res.render(`${rootViewFolder}error`, {title:'Libby - Error Page' , data:error.response.data, haveNavbar : false});
+                res.status(500).send('Error Loading Page: ' + 'API Error: ' + JSON.stringify( error.response.data ));
             }
 
         } else {
               console.error('API Error:', error);
-              detail = 'Unexpected Error: ' + error.message
-              res.render(`${rootViewFolder}error`, {title:"Error Page" , data:error , detail:detail,  haveNavbar : true});
+              res.status(500).send('Error Loading Page: ' + 'API Error: ' + JSON.stringify( error ));
         }
     }
 });
