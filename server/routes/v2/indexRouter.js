@@ -212,7 +212,7 @@ router.get('/add_book', async (req,res,next) => {
             }
 
         } else {
-              console.error('API Error:', error);
+              console.error('API Error 3:', error);
 
             // detail = 'Unexpected Error: ' + error.message
             // console.error('Unexpected Error:', error.message);
