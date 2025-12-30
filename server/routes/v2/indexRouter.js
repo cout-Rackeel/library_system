@@ -36,7 +36,8 @@ router.get('/' , async (req,res,next) => {
 
         res.render(`${rootViewFolder}index` , {title:`${app_name} - Home Page` , data:data, haveNavbar : true});
     }catch(error){
-        res.status(500).send('Error Loading Page');
+            detail = 'Unexpected Error: ' + error.message
+            res.render(`${rootViewFolder}error`, {title:"Error Page" , data:error , detail:detail,  haveNavbar : true});
         next(error)
     }
   
