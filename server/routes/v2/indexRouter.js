@@ -189,10 +189,12 @@ router.get('/add_book', async (req,res,next) => {
         if( process.env.NODE_ENV == 'development'){
             endpoint = 'http://localhost:5500' + resource;
         }else{
-            endpoint =  resource;
+            endpoint =  process.env.VERCEL_URI + resource;
         }
 
         var response = await axios.get(endpoint);
+
+        console.log(response);
 
         res.render(`${rootViewFolder}add_book`, {title:"Add Book" , data:response.data.body , haveNavbar : true , imageUrl:{}});
 
