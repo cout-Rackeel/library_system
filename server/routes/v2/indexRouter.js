@@ -184,15 +184,8 @@ router.get('/add_book', async (req,res,next) => {
     try{
     
         let resource = '/api/v2/category';
-        let endpoint = null;
-
-        if( process.env.NODE_ENV == 'development'){
-            endpoint = 'http://localhost:5500' + resource;
-        }else{
-            endpoint =  process.env.VERCEL_URI + resource;
-        }
-
-        var response = await axios.get(endpoint);
+       
+        var response = await axios.get(resource);
 
         console.log(response);
 
