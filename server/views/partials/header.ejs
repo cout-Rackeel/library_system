@@ -38,7 +38,7 @@
 </nav>
  -->
 
- <nav class="md:w-full flex flex-row items-center justify-between my-5 px-8 md:justify-around md:my-10">
+ <nav class="flex flex-row sticky top-0 z-50 bg-white/60 py-5 px-8 items-center justify-between my-0 md:py-0 md:px-8 md:w-full md:justify-around md:my-10 md:relative md:bg-transparent ">
 
   <div class="md:w-1/3 group">
        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse bg-primary px-6 py-1 w-fit hover-animation">
@@ -63,9 +63,43 @@
 
   <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
         <span class="sr-only">Open main menu</span>
-        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14" onclick="alert('Mobile navigation to be implemented')">
+        <svg class="w-5 h-5 text-primary" id="mobile-nav" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
         </svg>
   </button>
 
  </nav>
+
+  <dialog class="hidden w-full h-full absolute bg-white md:hidden z-50 " id="mobile-menu">
+    <div class="h-[40%] flex flex-col items-center justify-evenly">
+      <a href="/" class="w-full text-center text-xl font-outfit font-semibold  ">Home</a>
+      <a href="/bookshop" class="w-full text-center text-xl font-outfit font-semibold  ">Bookshop</a>
+      <!-- <a href="" class="text-xl font-outfit font-semibold">Your Books</a> -->
+      <a href="/add_book" class="w-full text-center text-xl font-outfit font-semibold  ">Add Book</a>
+    </div>
+   
+  </dialog>
+
+
+ <script language="javascript">
+
+    const mobileNavBtn = document.getElementById('mobile-nav');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+
+    mobileNavBtn.addEventListener('click', () => {
+        
+
+        if(mobileMenu.classList.contains("hidden")){
+          mobileMenu.classList.remove("hidden");
+          mobileMenu.classList.add("block");
+          document.body.style.overflow = 'hidden';
+        }else{
+           mobileMenu.classList.add("hidden");
+           document.body.style.overflow = 'scroll';
+        }
+
+        
+    });
+
+ </script>
