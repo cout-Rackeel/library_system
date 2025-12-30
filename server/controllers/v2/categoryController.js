@@ -19,12 +19,11 @@ exports.getAllCategories =  async(req , res, next) => {
     try{
          var categories = null;
         
-         categories = await getAllCategories();
-            // if(Object.keys(req.query).length === 0){
-            //     categories = await getAllCategories();
-            // }else{
-            //     categories = await getAllCategoryBy(req.query);
-            // }
+            if(Object.keys(req.query).length === 0){
+                categories = await getAllCategories();
+            }else{
+                categories = await getAllCategoryBy(req.query);
+            }
 
         res.status(200).json({
             status: res.statusCode ?? 201,

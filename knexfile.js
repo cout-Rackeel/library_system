@@ -20,11 +20,8 @@ module.exports = {
 
     production: {
         client: process.env.DB_CLIENT,
-        connection:{
-            connectionString:process.env.DB_CONNECTION_STRING,
-            pool: { min: 0, max: 5 },
-            ssl: {rejectUnauthorized:false}
-        },
+        connection:process.env.DB_CONNECTION_STRING,
+        pool: { min: 0, max: 10 },
         migrations:{
             directory: './server/migrations'
         },

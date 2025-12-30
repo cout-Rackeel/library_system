@@ -25,7 +25,6 @@ function formEndpoint(resource){
 router.get('/' , async (req,res,next) => {
     try{
         
-
         var booksResponse = await axios.get(formEndpoint('/api/v2/book/categories'));
         var categoriesResponse = await axios.get(formEndpoint('/api/v2/category'));
 
@@ -54,15 +53,8 @@ router.get('/login' , async(req , res, next) => {
 router.post('/login' , async (req,res,next) => {
     try{
         let resource = '/api/v2/auth/login';
-        let endpoint = null;
 
-        if( process.env.NODE_ENV == 'development'){
-            endpoint = 'http://localhost:5500' + resource;
-        }else{
-            endpoint = process.env.VERCEL_URI + resource;
-        }
-
-        const response = await axios.post(endpoint, {email: req.body.email, password: req.body.password});
+        const response = await axios.post(formEndpoint(resource), {email: req.body.email, password: req.body.password});
 
         res.cookie('jwt', response.data.body, {httpOnly: true , secure: true, sameSite: 'strict'} ) //Sets JWT token in httpsCookie on browser
         res.redirect('/');
@@ -106,13 +98,6 @@ router.get('/signup' , async(req , res, next) => {
 router.post('/signup' , async (req,res,next) => {
     try{
         let resource = '/api/v2/auth/signup';
-        let endpoint = null;
-
-        if( process.env.NODE_ENV == 'development'){
-            endpoint = 'http://localhost:5500' + resource;
-        }else{
-            endpoint = process.env.VERCEL_URI + resource;
-        }
 
         const userData = {
             f_name: req.body.fname,
@@ -122,7 +107,7 @@ router.post('/signup' , async (req,res,next) => {
             user_type : req.body.user_type ?? 'member'
         };
 
-        const response = await axios.post(endpoint, userData);
+        const response = await axios.post(formEndpoint(resource), userData);
 
         res.redirect('/login');
 
@@ -159,17 +144,8 @@ router.get('/users' , async (req,res,next) => {
         const bearer = "Bearer " + req.cookies.jwt // Retrieves JWT token stored in httpsCookie
 
         let resource = '/api/v2/user';
-        let endpoint = null;
 
-        if( process.env.NODE_ENV == 'development'){
-            endpoint = 'http://localhost:5500' + resource;
-        }else{
-            endpoint = process.env.VERCEL_URI + resource;
-        }
-
-        console.log(endpoint)
-
-        var response = await axios.get( endpoint, { headers: {'Authorization' : bearer } });
+        var response = await axios.get(formEndpoint(resource), { headers: {'Authorization' : bearer } });
 
         res.render(`${rootViewFolder}all_users`, {title:"All Users" , data:response.data.body , haveNavbar : true});
 
@@ -185,9 +161,7 @@ router.get('/add_book', async (req,res,next) => {
     
         let resource = '/api/v2/category';
 
-        let response = await axios.get('api/v2/category');
-
-        console.log(response);
+        const response = await axios.get(formEndpoint(resource));
 
         res.render(`${rootViewFolder}add_book`, {title:"Add Book" , data:response.data.body , haveNavbar : true , imageUrl:{}});
 
@@ -216,15 +190,7 @@ router.get('/add_book', async (req,res,next) => {
 router.post('/add_book', multerMiddleware.single('book_img'), async (req,res,next) => {
     try {
 
-        let bookResource = '/api/v2/book';
-        let bookEndpoint = null;
-
-
-        if( process.env.NODE_ENV == 'development'){
-            bookEndpoint = 'http://localhost:5500' + bookResource;
-        }else{
-            bookEndpoint = process.env.VERCEL_URI + bookResource;
-        }
+        let resource = '/api/v2/book';
 
         let bookData = {
             book_id: req.body.book_id,
@@ -237,9 +203,7 @@ router.post('/add_book', multerMiddleware.single('book_img'), async (req,res,nex
             trending:   false
         }
 
-        // res.json(bookData);
-
-        const response = await axios.post(bookEndpoint, bookData);
+        const response = await axios.post(formEndpoint(resource), bookData);
 
         res.redirect('/');
 

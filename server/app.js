@@ -109,8 +109,6 @@ const currentVersion = 'v2';
 
 if(process.env.NODE_ENV == "development"){
   app.listen(PORT , () => console.log(`Listening on port ${PORT} || http://localhost:5500/ ...`))
-}else{
-  app.listen(PORT , () => console.log(`Listening on port ${PORT} || http://localhost:5500/ ...`))
 }
 
 module.exports = app;
