@@ -185,7 +185,7 @@ router.get('/add_book', async (req,res,next) => {
     
         let resource = '/api/v2/category';
 
-        let response = await axios.get(resource);
+        let response = await axios.get('api/v2/category');
 
         console.log(response);
 
