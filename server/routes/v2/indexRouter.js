@@ -204,7 +204,7 @@ router.get('/add_book', async (req,res,next) => {
 
             if(error.response.data.status == 401 || 429){
                 console.error('API Error:', error.response.data);
-                // res.render(`${rootViewFolder}login`, {title:'Libby - Login Page' , data:req.body , error:error.response.data, haveNavbar : false});
+                res.render(`${rootViewFolder}error`, {title:'Libby - Error Page' , data:error.response.data, haveNavbar : false});
             }else{
                 console.error('API Error:', error.response.data);
                 res.render(`${rootViewFolder}error`, {title:'Libby - Error Page' , data:error.response.data, haveNavbar : false});
@@ -256,7 +256,7 @@ router.post('/add_book', multerMiddleware.single('book_img'), async (req,res,nex
 
         if (error.response && error.response.data) {
 
-            if(error.response.data.status == 400 || error.response.data.status ==429){
+            if(error.response.data.status == 400 || error.response.data.status == 429){
                 console.error('API Error:', error.response.data);
                 res.render(`${rootViewFolder}error`, {title:`${app_name} - Error Page` , data:req.body , error:error.response.data, haveNavbar : false});
             }else{
